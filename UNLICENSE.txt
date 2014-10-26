@@ -1,81 +1,24 @@
-#include<stdio.h>
-#include<stdlib.h>
-#include<time.h>
- 
-#define ad(x,y) x=x+y
-#define dv(x,y) x=x/y
-#define hv(x) x=x/2
-#define mp(l,t,f) t##MP(&t##f,l)
-#define mu(x,y) x=x*y
-#define sb(x,y) x=x-y
-#define sq(x) x=x*x
-#define tw(x) x=x+x
- 
-#define profile srand(time(NULL))
-#define pro(str) pro1(str)
-#define pro0(str)
-#define pro1(str) printf(" :%d%s%d ",1/(rand()/(RAND_MAX/pro2)),str,time(NULL)-(100*(time(NULL)/100)))
-#define pro2 10000
- 
-#define ch char
-#define uc unsigned char
-#define sc signed char
-#define sh short
-#define us unsigned short
-#define ss signed short
-#define in int
-#define ui unsigned int
-#define si signed int
-#define lo long
-#define lu unsigned long
-#define ls signed long
-#define ll long long
-#define ul unsigned long long
-#define sl signed long long
-#define fl float
-#define db double
-#define ld long double
- 
-#define F1(T) T (*f1)(T)
-#define P(T) T *p
- 
-#define H0 in H();
-#define H1 in H(){pro("");return 0;}
-#define INC0(T) T T##INC(T n);
-#define INC1(T) T T##INC(T n){pro("INC");return ++n;}
-#define MP0(T) T *T##MP(F1(T),P(T));
-#define MP1(T) T *T##MP(F1(T),P(T)){T i;for(i=p[0];i>0;--i){p[i]=(*f1)(p[i]);}pro("MP");return p;}
- 
-H0
- 
-MP0(uc)
- 
-INC0(uc)
- 
-INC1(uc)
- 
-MP1(uc)
- 
-H1
- 
-int main()
-{
-  profile;
-  db x=1.1;
-  ul i;
-  for(i=1;i<999;++i)
-  {
-    sq(x);
-    H();
-  }
-  printf("%f",x);
-  uc str[4];
-  str[0]=3;
-  str[1]='H';
-  str[2]='A';
-  str[3]='L';
-  mp(str,uc,INC);
-  printf("%c%c%c",str[1],str[2],str[3]);
-  return 0;
-}
- 
+This is free and unencumbered software released into the public domain.
+
+Anyone is free to copy, modify, publish, use, compile, sell, or
+distribute this software, either in source code form or as a compiled
+binary, for any purpose, commercial or non-commercial, and by any
+means.
+
+In jurisdictions that recognize copyright laws, the author or authors
+of this software dedicate any and all copyright interest in the
+software to the public domain. We make this dedication for the benefit
+of the public at large and to the detriment of our heirs and
+successors. We intend this dedication to be an overt act of
+relinquishment in perpetuity of all present and future rights to this
+software under copyright law.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+IN NO EVENT SHALL THE AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+OTHER DEALINGS IN THE SOFTWARE.
+
+For more information, please refer to <http://unlicense.org/>
