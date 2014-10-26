@@ -14,7 +14,7 @@
 #define profile srand(time(NULL))
 #define pro(str) pro1(str)
 #define pro0(str)
-#define pro1(str) printf(" :%d%s%d ",1/(rand()/(RAND_MAX/pro2)),str,time(NULL)-(100*(time(NULL)/100)))
+#define pro1(str) printf(" :%d%s%d ",1/(rand()/(RAND_MAX/pro2)),str,(char)(time(NULL)-(100*(time(NULL)/100))))
 #define pro2 10000
  
 #define ch char
@@ -78,4 +78,3 @@ int main()
   printf("%c%c%c",str[1],str[2],str[3]);
   return 0;
 }
- 
