@@ -40,8 +40,8 @@
 #define F1(type,name) type (*name)(type)
 #define P(type,name) type *name
  
-#define H0 IN VOh();
-#define H1 IN VOh(){PRO("");return 0;}
+#define H0 void VOh();
+#define H1 void VOh(){PRO("");}
 #define INC0(type) type type##inc(type number);
 #define INC1(type) type type##inc(type number){PRO("INC");return ++number;}
 #define MP0(type) type *type##mp(F1(type,function),P(type,array));
@@ -79,5 +79,3 @@ int main()
   printf("%c%c%c",string[1],string[2],string[3]);
   return 0;
 }
- 
- 
