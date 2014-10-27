@@ -11,6 +11,7 @@
 #define SB(x,y) x=x-y
 #define SQ(x) x=x*x
 #define TW(x) x=x+x
+#define RR(a,t,s) a=t##rr(s)
  
 #define PROFILE srand(time(NULL))
 #define PRO(string) PRO1(string)
@@ -46,19 +47,25 @@
 #define INC1(type) type type##inc(type number){PRO("INC");return ++number;}
 #define MP0(type) type *type##mp(F1(type,function),P(type,array));
 #define MP1(type) type *type##mp(F1(type,function),P(type,array)){type i;for(i=array[0];i>0;--i){array[i]=(*function)(array[i]);}PRO("MP");return array;}
+#define RR0(t) t *t##rr(t size);
+#define RR1(t) t *t##rr(t size){P(t,array);array=(t*)malloc(++size);array[0]=size;return array;}
  
 H0
  
 MP0(UC)
  
 INC0(UC)
+
+RR0(UC)
+
+RR1(UC)
  
 INC1(UC)
  
 MP1(UC)
  
 H1
- 
+
 int main()
 {
   PROFILE;
@@ -70,8 +77,8 @@ int main()
     SQ(x);
   }
   printf("%f",x);
-  UC string[4];
-  string[0]=3;
+  P(UC,string);
+  RR(string,UC,3);
   string[1]='H';
   string[2]='A';
   string[3]='L';
@@ -79,3 +86,4 @@ int main()
   printf("%c%c%c",string[1],string[2],string[3]);
   return 0;
 }
+ 
