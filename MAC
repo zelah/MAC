@@ -2,81 +2,82 @@
 #include<stdlib.h>
 #include<time.h>
  
-#define ad(one,two) one=one+two
-#define dv(one,two) one=one/two
-#define h H()
-#define hv(one) one=one/2
-#define mp(array,type,function) type##MP(&type##function,array)
-#define mu(one,two) one=one*two
-#define sb(one,two) one=one-two
-#define sq(one) one=one*one
-#define tw(one) one=one+one
+#define AD(x,y) x=x+y
+#define DV(x,y) x=x/y
+#define H VOh()
+#define HV(x) x=x/2
+#define MP(a,t,f) t##mp(&t##f,a)
+#define MU(x,y) x=x*y
+#define SB(x,y) x=x-y
+#define SQ(x) x=x*x
+#define TW(x) x=x+x
  
-#define profile srand(time(NULL))
-#define pro(string) pro1(string)
-#define pro0(string)
-#define pro1(string) printf(" :%d%s%d ",1/(rand()/(RAND_MAX/pro2)),string,(uc)(time(NULL)-(256*(time(NULL)/256))))
-#define pro2 10000
+#define PROFILE srand(time(NULL))
+#define PRO(string) PRO1(string)
+#define PRO0(string)
+#define PRO1(string) printf(" :%d%s%d ",1/(rand()/(RAND_MAX/PRO2)),string,(UC)(time(NULL)-(256*(time(NULL)/256))))
+#define PRO2 10000
  
-#define ch char
-#define uc unsigned char
-#define sc signed char
-#define sh short
-#define us unsigned short
-#define ss signed short
-#define in int
-#define ui unsigned int
-#define si signed int
-#define lo long
-#define lu unsigned long
-#define ls signed long
-#define ll long long
-#define ul unsigned long long
-#define sl signed long long
-#define fl float
-#define db double
-#define ld long double
+#define CH char
+#define UC unsigned char
+#define SC signed char
+#define SH short
+#define US unsigned short
+#define SS signed short
+#define IN int
+#define UI unsigned int
+#define SI signed int
+#define LO long
+#define LU unsigned long
+#define LS signed long
+#define LL long long
+#define UL unsigned long long
+#define SL signed long long
+#define FL float
+#define DB double
+#define LD long double
  
 #define F1(type,name) type (*name)(type)
 #define P(type,name) type *name
  
-#define H0 in H();
-#define H1 in H(){pro("");return 0;}
-#define INC0(type) type type##INC(type number);
-#define INC1(type) type type##INC(type number){pro("INC");return ++number;}
-#define MP0(type) type *type##MP(F1(type,function),P(type,array));
-#define MP1(type) type *type##MP(F1(type,function),P(type,array)){type index;for(index=array[0];index>0;--index){array[index]=(*function)(array[index]);}pro("MP");return array;}
+#define H0 IN VOh();
+#define H1 IN VOh(){PRO("");return 0;}
+#define INC0(type) type type##inc(type number);
+#define INC1(type) type type##inc(type number){PRO("INC");return ++number;}
+#define MP0(type) type *type##mp(F1(type,function),P(type,array));
+#define MP1(type) type *type##mp(F1(type,function),P(type,array)){type i;for(i=array[0];i>0;--i){array[i]=(*function)(array[i]);}PRO("MP");return array;}
  
 H0
  
-MP0(uc)
+MP0(UC)
  
-INC0(uc)
+INC0(UC)
  
-INC1(uc)
+INC1(UC)
  
-MP1(uc)
+MP1(UC)
  
 H1
  
 int main()
 {
-  profile;
-  db number=1.1;
-  ul index;
-  h;
-  for(index=1;index<999999999;++index)
+  PROFILE;
+  DB x=1.1;
+  UL i;
+  H;
+  for(i=1;i<999999999;++i)
   {
-    sq(number);
+    SQ(x);
   }
-  printf("%f",number);
-  uc string[4];
+  printf("%f",x);
+  UC string[4];
   string[0]=3;
   string[1]='H';
   string[2]='A';
   string[3]='L';
-  mp(string,uc,INC);
+  MP(string,UC,inc);
   printf("%c%c%c",string[1],string[2],string[3]);
   return 0;
 }
+ 
  
