@@ -4,6 +4,7 @@
  
 #define ad(x,y) x=x+y
 #define dv(x,y) x=x/y
+#define h H()
 #define hv(x) x=x/2
 #define mp(l,t,f) t##MP(&t##f,l)
 #define mu(x,y) x=x*y
@@ -63,10 +64,10 @@ int main()
   profile;
   db x=1.1;
   ul i;
-  for(i=1;i<999;++i)
+  h;
+  for(i=1;i<999999999;++i)
   {
     sq(x);
-    H();
   }
   printf("%f",x);
   uc str[4];
@@ -78,4 +79,3 @@ int main()
   printf("%c%c%c",str[1],str[2],str[3]);
   return 0;
 }
- 
