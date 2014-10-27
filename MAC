@@ -2,20 +2,20 @@
 #include<stdlib.h>
 #include<time.h>
  
-#define ad(x,y) x=x+y
-#define dv(x,y) x=x/y
+#define ad(one,two) one=one+two
+#define dv(one,two) one=one/two
 #define h H()
-#define hv(x) x=x/2
-#define mp(l,t,f) t##MP(&t##f,l)
-#define mu(x,y) x=x*y
-#define sb(x,y) x=x-y
-#define sq(x) x=x*x
-#define tw(x) x=x+x
+#define hv(one) one=one/2
+#define mp(array,type,function) type##MP(&type##function,array)
+#define mu(one,two) one=one*two
+#define sb(one,two) one=one-two
+#define sq(one) one=one*one
+#define tw(one) one=one+one
  
 #define profile srand(time(NULL))
-#define pro(str) pro1(str)
-#define pro0(str)
-#define pro1(str) printf(" :%d%s%d ",1/(rand()/(RAND_MAX/pro2)),str,(uc)(time(NULL)-(256*(time(NULL)/256))))
+#define pro(string) pro1(string)
+#define pro0(string)
+#define pro1(string) printf(" :%d%s%d ",1/(rand()/(RAND_MAX/pro2)),string,(uc)(time(NULL)-(256*(time(NULL)/256))))
 #define pro2 10000
  
 #define ch char
@@ -37,15 +37,15 @@
 #define db double
 #define ld long double
  
-#define F1(T) T (*f1)(T)
-#define P(T) T *p
+#define F1(type,name) type (*name)(type)
+#define P(type,name) type *name
  
 #define H0 in H();
 #define H1 in H(){pro("");return 0;}
-#define INC0(T) T T##INC(T n);
-#define INC1(T) T T##INC(T n){pro("INC");return ++n;}
-#define MP0(T) T *T##MP(F1(T),P(T));
-#define MP1(T) T *T##MP(F1(T),P(T)){T i;for(i=p[0];i>0;--i){p[i]=(*f1)(p[i]);}pro("MP");return p;}
+#define INC0(type) type type##INC(type number);
+#define INC1(type) type type##INC(type number){pro("INC");return ++number;}
+#define MP0(type) type *type##MP(F1(type,function),P(type,array));
+#define MP1(type) type *type##MP(F1(type,function),P(type,array)){type index;for(index=array[0];index>0;--index){array[index]=(*function)(array[index]);}pro("MP");return array;}
  
 H0
  
@@ -62,20 +62,21 @@ H1
 int main()
 {
   profile;
-  db x=1.1;
-  ul i;
+  db number=1.1;
+  ul index;
   h;
-  for(i=1;i<999999999;++i)
+  for(index=1;index<999999999;++index)
   {
-    sq(x);
+    sq(number);
   }
-  printf("%f",x);
-  uc str[4];
-  str[0]=3;
-  str[1]='H';
-  str[2]='A';
-  str[3]='L';
-  mp(str,uc,INC);
-  printf("%c%c%c",str[1],str[2],str[3]);
+  printf("%f",number);
+  uc string[4];
+  string[0]=3;
+  string[1]='H';
+  string[2]='A';
+  string[3]='L';
+  mp(string,uc,INC);
+  printf("%c%c%c",string[1],string[2],string[3]);
   return 0;
 }
+ 
