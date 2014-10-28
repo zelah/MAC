@@ -16,7 +16,7 @@
 #define PROFILE srand(time(NULL))
 #define PRO(s) PRO1(s)
 #define PRO0(s)
-#define PRO1(s) printf(" :%d%s%d ",1/(rand()/(RAND_MAX/PRO2)),s,(UC)(time(NULL)-(256*(time(NULL)/256))))
+#define PRO1(s) time_t t=time(NULL);printf(" :%d%s%d ",1/(rand()/(RAND_MAX/PRO2)),s,(UC)(t-(256*(t/256))))
 #define PRO2 10000
  
 #define CH char
@@ -40,7 +40,7 @@
 #define ND(t) typedef struct next {t v;struct next*n;} t##ND;
  
 #define F1(t,n) t (*n)(t)
-#define L(t,n) t##ND *n
+#define L(t,n) t##ND *n;n=NULL
 #define P(t,n) t *n
  
 #define H0 void VOh();
