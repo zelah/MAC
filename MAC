@@ -16,7 +16,7 @@
 #define PROFILE srand(time(NULL))
 #define PRO(s) PRO1(s)
 #define PRO0(s)
-#define PRO1(s) time_t t=time(NULL);printf(" :%d%s%d ",1/(rand()/(RAND_MAX/PRO2)),s,(UC)(t-(256*(t/256))))
+#define PRO1(s) {time_t t=time(NULL);printf(" :%d%s%d ",1/(rand()/(RAND_MAX/PRO2)),s,(UC)(t-(256*(t/256))));}
 #define PRO2 10000
  
 #define CH char
