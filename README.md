@@ -1,4 +1,4 @@
 MAC
 ===
 
-(M)y (A)dvanced (C) (MAC)ros
+My Advanced C Macros
