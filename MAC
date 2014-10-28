@@ -8,15 +8,15 @@
 #define HV(x) x=x/2
 #define MP(a,t,f) t##mp(&t##f,a)
 #define MU(x,y) x=x*y
+#define RR(a,t,s) a=t##rr(s)
 #define SB(x,y) x=x-y
 #define SQ(x) x=x*x
 #define TW(x) x=x+x
-#define RR(a,t,s) a=t##rr(s)
  
 #define PROFILE srand(time(NULL))
-#define PRO(string) PRO1(string)
-#define PRO0(string)
-#define PRO1(string) printf(" :%d%s%d ",1/(rand()/(RAND_MAX/PRO2)),string,(UC)(time(NULL)-(256*(time(NULL)/256))))
+#define PRO(s) PRO1(s)
+#define PRO0(s)
+#define PRO1(s) printf(" :%d%s%d ",1/(rand()/(RAND_MAX/PRO2)),s,(UC)(time(NULL)-(256*(time(NULL)/256))))
 #define PRO2 10000
  
 #define CH char
@@ -38,17 +38,17 @@
 #define DB double
 #define LD long double
  
-#define F1(type,name) type (*name)(type)
-#define P(type,name) type *name
+#define F1(t,n) t (*n)(t)
+#define P(t,n) t *n
  
 #define H0 void VOh();
 #define H1 void VOh(){PRO("");}
-#define INC0(type) type type##inc(type number);
-#define INC1(type) type type##inc(type number){PRO("INC");return ++number;}
-#define MP0(type) type *type##mp(F1(type,function),P(type,array));
-#define MP1(type) type *type##mp(F1(type,function),P(type,array)){type i;for(i=array[0];i>0;--i){array[i]=(*function)(array[i]);}PRO("MP");return array;}
-#define RR0(t) t *t##rr(t size);
-#define RR1(t) t *t##rr(t size){P(t,array);array=(t*)malloc(size+1);array[0]=size;PRO("RR");return array;}
+#define INC0(t) t t##inc(t n);
+#define INC1(t) t t##inc(t n){PRO("INC");return ++n;}
+#define MP0(t) t *t##mp(F1(t,f),P(t,a));
+#define MP1(t) t *t##mp(F1(t,f),P(t,a)){t i;for(i=a[0];i>0;--i){a[i]=(*f)(a[i]);}PRO("MP");return a;}
+#define RR0(t) t *t##rr(t s);
+#define RR1(t) t *t##rr(t s){P(t,a);a=(t*)malloc(s+1);a[0]=s;PRO("RR");return a;}
  
 H0
  
@@ -77,12 +77,13 @@ int main()
     SQ(x);
   }
   printf("%f",x);
-  P(UC,string);
-  RR(string,UC,3);
-  string[1]='H';
-  string[2]='A';
-  string[3]='L';
-  MP(string,UC,inc);
-  printf("%c%c%c",string[1],string[2],string[3]);
+  P(UC,s);
+  RR(s,UC,3);
+  s[1]='H';
+  s[2]='A';
+  s[3]='L';
+  MP(s,UC,inc);
+  printf("%c%c%c",s[1],s[2],s[3]);
   return 0;
 }
+ 
