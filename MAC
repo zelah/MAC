@@ -37,8 +37,10 @@
 #define FL float
 #define DB double
 #define LD long double
+#define ND(t) typedef struct next {t v;struct next*n;} t##ND;
  
 #define F1(t,n) t (*n)(t)
+#define L(t,x) t##ND x;x.n=NULL
 #define P(t,n) t *n
  
 #define H0 void VOh();
@@ -49,7 +51,9 @@
 #define MP1(t) t *t##mp(F1(t,f),P(t,a)){t i;for(i=a[0];i>0;--i){a[i]=(*f)(a[i]);}PRO("MP");return a;}
 #define RR0(t) t *t##rr(t s);
 #define RR1(t) t *t##rr(t s){P(t,a);a=(t*)malloc((s+1)*sizeof(t));a[0]=s;PRO("RR");return a;}
- 
+
+ND(UC)
+
 H0
  
 MP0(UC)
@@ -84,5 +88,8 @@ int main()
   s[3]='L';
   MP(s,UC,inc);
   printf("%c%c%c",s[1],s[2],s[3]);
+  L(UC,list);
+  list.v='Z';
+  printf(" %c ",list.v);
   return 0;
 }
