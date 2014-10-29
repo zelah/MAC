@@ -4,7 +4,7 @@
  
 #define AD(x,y) x=x+y
 #define DV(x,y) x=x/y
-#define H VOh()
+#define HW VOhw()
 #define HV(x) x=x/2
 #define MP(a,t,f) t##mp(&t##f,a)
 #define MU(x,y) x=x*y
@@ -26,8 +26,8 @@
 #define L(t,n) t##ND *n;n=NULL
 #define P(t,n) t *n
  
-#define H0 void VOh();
-#define H1 void VOh(){PRO("");}
+#define HW0 void VOhw();
+#define HW1 void VOhw(){PRO("");}
 #define INC0(t) t t##inc(t n);
 #define INC1(t) t t##inc(t n){PRO("INC");return ++n;}
 #define MP0(t) t *t##mp(F1(t,f),P(t,a));
@@ -57,7 +57,7 @@ typedef double DB;
 typedef long double LD;
 ND(UC)
  
-H0
+HW0
  
 MP0(UC)
  
@@ -75,14 +75,14 @@ INC1(UC)
  
 MP1(UC)
  
-H1
+HW1
  
 int main()
 {
   PROFILE;
   DB x=1.1;
   UL i;
-  H;
+  HW;
   for(i=1;i<999999999;++i)
   {
     SQ(x);
