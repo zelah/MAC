@@ -8,6 +8,7 @@
 #define HV(x) x=x/2
 #define MP(a,t,f) t##mp(&t##f,a)
 #define MU(x,y) x=x*y
+#define PS(l,t,v) l=t##NDps(v,l)
 #define RR(a,t,s) a=t##rr(s)
 #define SB(x,y) x=x-y
 #define SQ(x) x=x*x
@@ -63,9 +64,9 @@ MP0(UC)
 INC0(UC)
  
 RR0(UC)
-
+ 
 PS0(UC)
-
+ 
 PS1(UC)
  
 RR1(UC)
@@ -95,8 +96,7 @@ int main()
   MP(s,UC,inc);
   printf("%c%c%c",s[1],s[2],s[3]);
   L(UC,list);
-  list=(UCND*)malloc(sizeof(UCND));
-  list->v='Z';
+  PS(list,UC,'Z');
   printf(" %c ",list->v);
   return 0;
 }
