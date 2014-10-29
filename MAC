@@ -16,27 +16,9 @@
 #define PROFILE srand(time(NULL))
 #define PRO(s) PRO1(s)
 #define PRO0(s)
-#define PRO1(s) {time_t t=time(NULL);printf(":%s%c%d ",s,1/(rand()/(RAND_MAX/PRO2)),(UC)(t-(256*(t/256))));}
+#define PRO1(s) {time_t t=time(NULL);printf(":%c%s%d ",1/(rand()/(RAND_MAX/PRO2)),s,(UC)(t-(256*(t/256))));}
 #define PRO2 100
  
-#define CH char
-#define UC unsigned char
-#define SC signed char
-#define SH short
-#define US unsigned short
-#define SS signed short
-#define IN int
-#define UI unsigned int
-#define SI signed int
-#define LO long
-#define LU unsigned long
-#define LS signed long
-#define LL long long
-#define UL unsigned long long
-#define SL signed long long
-#define FL float
-#define DB double
-#define LD long double
 #define ND(t) typedef struct next {t v;struct next*n;} t##ND;
  
 #define F1(t,n) t (*n)(t)
@@ -49,9 +31,29 @@
 #define INC1(t) t t##inc(t n){PRO("INC");return ++n;}
 #define MP0(t) t *t##mp(F1(t,f),P(t,a));
 #define MP1(t) t *t##mp(F1(t,f),P(t,a)){t i;for(i=a[0];i>0;--i){a[i]=(*f)(a[i]);}PRO("MP");return a;}
+#define PS0(t) t##ND *t##NDps(t v,t##ND *l);
+#define PS1(t) t##ND *t##NDps(t v,t##ND *l){L(t,r);r=(t##ND*)malloc(sizeof(t##ND));r->v=v;r->n=l;return r;}
 #define RR0(t) t *t##rr(t s);
 #define RR1(t) t *t##rr(t s){P(t,a);a=(t*)malloc((s+1)*sizeof(t));a[0]=s;PRO("RR");return a;}
  
+typedef char CH;
+typedef unsigned char UC;
+typedef signed char SC;
+typedef short SH;
+typedef unsigned short US;
+typedef signed short SS;
+typedef int IN;
+typedef unsigned int UI;
+typedef signed int SI;
+typedef long LO;
+typedef unsigned long LU;
+typedef signed long LS;
+typedef long long LL;
+typedef unsigned long long UL;
+typedef signed long long SL;
+typedef float FL;
+typedef double DB;
+typedef long double LD;
 ND(UC)
  
 H0
@@ -61,6 +63,10 @@ MP0(UC)
 INC0(UC)
  
 RR0(UC)
+
+PS0(UC)
+
+PS1(UC)
  
 RR1(UC)
  
