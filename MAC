@@ -18,7 +18,7 @@
 #define PRO(s) PRO1(s)
 #define PRO0(s)
 #define PRO1(s) {time_t t=time(NULL);printf(":%c%s%d ",1/(rand()/(RAND_MAX/PRO2)),s,(CH)(t-(100*(t/100))));}
-#define PRO2 100
+#define PRO2 777
  
 #define ND(t) typedef struct next {t v;struct next*n;} t##ND;
  
@@ -80,11 +80,12 @@ HW1
 int main()
 {
   PROFILE;
-  DB x=1.1;
+  DB x=1.000001;
   UL i;
   HW;
   for(i=1;i<999999999;++i)
   {
+    if(x>2){x/=2;}
     SQ(x);
   }
   printf("%f",x);
