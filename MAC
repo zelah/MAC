@@ -19,7 +19,7 @@
 #define PRO0(s)
 #define PRO1(s) {int r=rand()/(RAND_MAX/PRO3);if(r==0){printf(":%s\n",s);fflush(stdout);printf("%c",1/r);}}
 #define PRO2(s) {time_t t=time(NULL);int r=rand()/(RAND_MAX/PRO3);fflush(stdout);printf(":%s%3d ",s,(char)(t%100));fflush(stdout);printf("%c",1/r);}
-#define PRO3 7
+#define PRO3 77
  
 #define ND(t) typedef struct next {t v;struct next*n;} t##ND;
  
@@ -28,7 +28,7 @@
 #define P(t,n) t *n
  
 #define HW0 void VOhw();
-#define HW1 void VOhw(){PRO("");}
+#define HW1 void VOhw(){PRO("HW");}
 #define INC0(t) t t##inc(t n);
 #define INC1(t) t t##inc(t n){PRO("INC");return ++n;}
 #define MP0(t) t *t##mp(F1(t,f),P(t,a));
@@ -58,6 +58,11 @@ typedef double DB;
 typedef long double LD;
 ND(UC)
  
+UC UCad(UC x,UC y);
+UC UCad(UC x,UC y){PRO("ADD");return x+y;}
+UC UCrd(UC *l,UC f,UC (*c)(UC,UC));
+UC UCrd(UC *l,UC f,UC (*c)(UC,UC)){UC p;l[l[0]]=(*c)(l[l[0]],f);for(p=l[0]-1;p>0;--p){l[p]=(*c)(l[p],l[p+1]);}PRO("RD");return l[1];}
+
 HW0
  
 MP0(UC)
@@ -90,15 +95,21 @@ int main()
     SQ(x);
   }
   printf("%f",x);
-  P(UC,s);
-  RR(s,UC,3);
-  s[1]='H';
-  s[2]='A';
-  s[3]='L';
-  MP(s,UC,inc);
-  printf("%c%c%c",s[1],s[2],s[3]);
+  P(UC,a);
+  RR(a,UC,3);
+  a[1]='H';
+  a[2]='A';
+  a[3]='L';
+  MP(a,UC,inc);
+  printf("%c%c%c",a[1],a[2],a[3]);
   L(UC,list);
   PS(list,UC,'Z');
   printf(" %c ",list->v);
+  UC u;
+  a[1]=1;
+  a[2]=2;
+  a[3]=3;
+  u=UCrd(a,0,&UCad);
+  printf(" %d ",u);
   return 0;
 }
