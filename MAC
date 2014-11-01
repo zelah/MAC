@@ -9,7 +9,7 @@
 #define MP(a,t,f) t##mp(&t##f,a)
 #define MU(x,y) x=x*y
 #define PS(l,t,v) l=t##NDps(v,l)
-#define RR(a,t,s) a=t##rr(s)
+#define RR(a,t,s) P(t,a);a=t##rr(s)
 #define SB(x,y) x=x-y
 #define SQ(x) x=x*x
 #define TW(x) x=x+x
@@ -59,10 +59,10 @@ typedef long double LD;
 ND(UC)
  
 UC UCad(UC x,UC y);
-UC UCad(UC x,UC y){PRO("ADD");return x+y;}
+UC UCad(UC x,UC y){PRO("AD");return x+y;}
 UC UCrd(UC *l,UC f,UC (*c)(UC,UC));
 UC UCrd(UC *l,UC f,UC (*c)(UC,UC)){UC p;l[l[0]]=(*c)(l[l[0]],f);for(p=l[0]-1;p>0;--p){l[p]=(*c)(l[p],l[p+1]);}PRO("RD");return l[1];}
-
+ 
 HW0
  
 MP0(UC)
@@ -95,7 +95,6 @@ int main()
     SQ(x);
   }
   printf("%f",x);
-  P(UC,a);
   RR(a,UC,3);
   a[1]='H';
   a[2]='A';
