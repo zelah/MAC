@@ -9,7 +9,7 @@
 #define MP(a,t,f) t##mp(&t##f,a)
 #define MU(x,y) x=x*y
 #define PS(l,t,v) l=t##NDps(v,l)
-#define RD(r,a,t,f,c) r=t##rd(a,f,&t##c);
+#define RD(r,t,f,a,c) r=t##rd(f,a,&t##c);
 #define RR(a,t,s) P(t,a);a=t##rr(s)
 #define SB(x,y) x=x-y
 #define SQ(x) x=x*x
@@ -38,8 +38,8 @@
 #define MP1(t) t *t##mp(F1(t,f),P(t,a)){t i;for(i=a[0];i>0;--i){a[i]=(*f)(a[i]);}PRO("MP");return a;}
 #define PS0(t) t##ND *t##NDps(t v,t##ND *l);
 #define PS1(t) t##ND *t##NDps(t v,t##ND *l){L(r,t);r=(t##ND*)malloc(sizeof(t##ND));r->v=v;r->n=l;return r;}
-#define RD0(t) t t##rd(t *l,t f,t (*c)(t,t));
-#define RD1(t) t t##rd(t *l,t f,t (*c)(t,t)){t p;l[l[0]]=(*c)(l[l[0]],f);for(p=l[0]-1;p>0;--p){l[p]=(*c)(l[p],l[p+1]);}PRO("RD");return l[1];}
+#define RD0(t) t t##rd(t f,t *a,t (*c)(t,t));
+#define RD1(t) t t##rd(t f,t *a,t (*c)(t,t)){t p;a[a[0]]=(*c)(a[a[0]],f);for(p=a[0]-1;p>0;--p){a[p]=(*c)(a[p],a[p+1]);}PRO("RD");return a[1];}
 #define RR0(t) t *t##rr(t s);
 #define RR1(t) t *t##rr(t s){P(t,a);a=(t*)malloc((s+1)*sizeof(t));a[0]=s;PRO("RR");return a;}
  
@@ -63,7 +63,7 @@ typedef double DB;
 typedef long double LD;
 ND(UC)
  
-
+ 
  
 HW0
  
@@ -76,13 +76,13 @@ RR0(UC)
 PS0(UC)
  
 AD0(UC)
-
+ 
 RD0(UC)
-
+ 
 RD1(UC)
-
+ 
 AD1(UC)
-
+ 
 PS1(UC)
  
 RR1(UC)
@@ -118,7 +118,7 @@ int main()
   a[1]=1;
   a[2]=2;
   a[3]=3;
-  RD(u,a,UC,0,ad);
+  RD(u,UC,0,a,ad);
   printf(" %d ",u);
   return 0;
 }
