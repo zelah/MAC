@@ -10,7 +10,7 @@
 #define MU(x,y) x=x*y
 #define PS(l,t,v) l=t##NDps(v,l)
 #define RD(r,t,f,a,c) r=t##rd(f,a,&t##c);
-#define RR(a,t,s) P(t,a);a=t##rr(s)
+#define RR(a,t,s) P(a,t);a=t##rr(s)
 #define SB(x,y) x=x-y
 #define SQ(x) x=x*x
 #define TW(x) x=x+x
@@ -30,9 +30,9 @@
  
 #define ND(t) typedef struct next {t v;struct next*n;} t##ND;
  
-#define F1(t,n) t (*n)(t)
+#define F1(n,t) t (*n)(t)
 #define L(n,t) t##ND *n;n=NULL
-#define P(t,n) t *n
+#define P(n,t) t *n
  
 #define AD0(t) t t##ad(t x,t y);
 #define AD1(t) t t##ad(t x,t y){PRO("AD");return x+y;}
@@ -40,14 +40,14 @@
 #define HW1 void VOhw(){PRO("HW");}
 #define INC0(t) t t##inc(t n);
 #define INC1(t) t t##inc(t n){PRO("INC");return ++n;}
-#define MP0(t) t *t##mp(F1(t,f),P(t,a));
-#define MP1(t) t *t##mp(F1(t,f),P(t,a)){t i;for(i=a[0];i>0;--i){a[i]=(*f)(a[i]);}PRO("MP");return a;}
+#define MP0(t) t *t##mp(F1(f,t),P(a,t));
+#define MP1(t) t *t##mp(F1(f,t),P(a,t)){t i;for(i=a[0];i>0;--i){a[i]=(*f)(a[i]);}PRO("MP");return a;}
 #define PS0(t) t##ND *t##NDps(t v,t##ND *l);
 #define PS1(t) t##ND *t##NDps(t v,t##ND *l){L(r,t);r=(t##ND*)malloc(sizeof(t##ND));r->v=v;r->n=l;return r;}
 #define RD0(t) t t##rd(t f,t *a,t (*c)(t,t));
 #define RD1(t) t t##rd(t f,t *a,t (*c)(t,t)){t p;a[a[0]]=(*c)(a[a[0]],f);for(p=a[0]-1;p>0;--p){a[p]=(*c)(a[p],a[p+1]);}PRO("RD");return a[1];}
 #define RR0(t) t *t##rr(t s);
-#define RR1(t) t *t##rr(t s){P(t,a);a=(t*)malloc((s+1)*sizeof(t));a[0]=s;PRO("RR");return a;}
+#define RR1(t) t *t##rr(t s){P(a,t);a=(t*)malloc((s+1)*sizeof(t));a[0]=s;PRO("RR");return a;}
  
 typedef char CH;
 typedef unsigned char UC;
