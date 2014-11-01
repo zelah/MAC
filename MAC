@@ -16,6 +16,7 @@
 #define TW(x) x=x+x
  
 #define PROFILE srand(time(NULL))
+//PROFILE; at the top of main()
 #define PRO(s) PRO1(s)
 //PRO0(s) profiling off
 //PRO1(s) profiling on
