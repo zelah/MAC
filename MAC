@@ -18,9 +18,10 @@
 #define PROFILE srand(time(NULL))
 #define PRO(s) PRO1(s)
 #define PRO0(s)
-#define PRO1(s) {int r=rand()/(RAND_MAX/PRO3);if(r==0){printf(":%s ",s);fflush(stdout);}}
+#define PRO1(s) {int r=rand()/(RAND_MAX/PRO3);if(r==0){printf(":%s ",s);fflush(stdout);if(rand()/(RAND_MAX/PRO4)){;}else{printf("%c",1/0);}}}
 #define PRO2(s) {time_t t=time(NULL);int r=rand()/(RAND_MAX/PRO3);fflush(stdout);printf(":%s%3d ",s,(char)(t%100));fflush(stdout);printf("%c",1/r);}
-#define PRO3 3
+#define PRO3 5
+#define PRO4 3
  
 #define ND(t) typedef struct next {t v;struct next*n;} t##ND;
  
