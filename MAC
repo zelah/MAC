@@ -7,7 +7,7 @@
 #define HW VOhw()
 #define HV(x) x=x/2
 #define KP(a,t,f) t##kp(a,&t##f)
-#define MP(a,t,f) t##mp(&t##f,a)
+#define MP(a,t,f) t##mp(a,&t##f)
 #define MU(x,y) x=x*y
 #define PP(l,t) l=t##pp(l)
 #define PS(l,t,v) l=t##ps(v,l)
@@ -45,8 +45,8 @@
 #define INC1(t) t t##inc(t n){PRO("INC");return n+1;}
 #define KP0(t) t *t##kp(P(a,t),F1(f,t));
 #define KP1(t) t *t##kp(P(a,t),F1(f,t)){L(l,t);t i;t c=0;for(i=a[0];i>0;--i){if((*f)(a[i])){PS(l,t,a[i]);++c;}}a[0]=c;for(i=1;i<=c;++i){a[i]=l->v;PP(l,t);}PRO("KP");return a;}
-#define MP0(t) t *t##mp(F1(f,t),P(a,t));
-#define MP1(t) t *t##mp(F1(f,t),P(a,t)){t i;for(i=a[0];i>0;--i){a[i]=(*f)(a[i]);}PRO("MP");return a;}
+#define MP0(t) t *t##mp(P(a,t),F1(f,t));
+#define MP1(t) t *t##mp(P(a,t),F1(f,t)){t i;for(i=a[0];i>0;--i){a[i]=(*f)(a[i]);}PRO("MP");return a;}
 #define PP0(t) t##ND *t##pp(t##ND *l);
 #define PP1(t) t##ND *t##pp(t##ND *l){t##ND *r;r=l->n;free(l);PRO("PP");return r;}
 #define PS0(t) t##ND *t##ps(t v,t##ND *l);
@@ -95,9 +95,9 @@ RD0(UC)
 PP0(UC)
  
 KP0(UC)
-
-
-
+ 
+ 
+ 
 KP1(UC)
  
 PP1(UC)
@@ -116,7 +116,7 @@ MP1(UC)
  
 HW1
  
-
+ 
  
 int main()
 {
