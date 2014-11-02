@@ -23,9 +23,9 @@
 //PRO1(s) profiling on
 //PRO2(s) verbose halting
 #define PRO0(s)
-#define PRO1(s) {int r=rand()/(RAND_MAX/PRO3);if(r==0){printf(":%s ",s);fflush(stdout);}}
-#define PRO2(s) {time_t t=time(NULL);int r=rand()/(RAND_MAX/PRO3);fflush(stdout);printf(":%s%3d ",s,(char)(t%100));fflush(stdout);printf("%c",1/r);}
-#define PRO3 5
+#define PRO1(s) {int r=rand()/(RAND_MAX/PRO3);if(r==0){printf(" :%s ",s);fflush(stdout);}}
+#define PRO2(s) {time_t t=time(NULL);int r=rand()/(RAND_MAX/PRO3);fflush(stdout);printf(" :%s%3d ",s,(char)(t%100));fflush(stdout);printf("%c",1/r);}
+#define PRO3 22
 //raise number to decrease sampling frequency
  
 #define ND(t) typedef struct next {t v;struct next*n;} t##ND;
@@ -102,29 +102,36 @@ HW1
 int main()
 {
   PROFILE;
-  DB x=1.000001;
-  UL i;
-  HW;
-  for(i=1;i<999999999;++i)
+  UL j;
+  for(j=1;j<99;++j)
   {
-    if(x>2){x/=2;}
-    SQ(x);
+    DB x=1.000001;
+    UL i;
+    HW;
+    for(i=1;i<9999999;++i)
+    {
+      if(x>2){x/=2;}
+      SQ(x);
+    }
+    printf("%f",x);
+    RR(a,UC,3);
+    a[1]='H';
+    a[2]='A';
+    a[3]='L';
+    MP(a,UC,inc);
+    printf(" %c%c%c ",a[1],a[2],a[3]);
+    L(list,UC);
+    PS(list,UC,'Z');
+    printf(" %c ",list->v);
+    UC u;
+    a[1]=1;
+    a[2]=2;
+    a[3]=3;
+    RD(u,UC,0,a,ad);
+    printf(" %d ",u);
+    free(a);
+    //should really dispose of list
+    printf("\n\n");
   }
-  printf("%f",x);
-  RR(a,UC,3);
-  a[1]='H';
-  a[2]='A';
-  a[3]='L';
-  MP(a,UC,inc);
-  printf("%c%c%c",a[1],a[2],a[3]);
-  L(list,UC);
-  PS(list,UC,'Z');
-  printf(" %c ",list->v);
-  UC u;
-  a[1]=1;
-  a[2]=2;
-  a[3]=3;
-  RD(u,UC,0,a,ad);
-  printf(" %d ",u);
   return 0;
 }
