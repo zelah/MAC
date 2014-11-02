@@ -6,6 +6,7 @@
 #define DV(x,y) x=x/y
 #define HW VOhw()
 #define HV(x) x=x/2
+#define KP(a,t,f) t##kp(a,&t##f)
 #define MP(a,t,f) t##mp(&t##f,a)
 #define MU(x,y) x=x*y
 #define PP(l,t) l=t##pp(l)
@@ -42,6 +43,8 @@
 #define HW1 void VOhw(){PRO("HW");}
 #define INC0(t) t t##inc(t n);
 #define INC1(t) t t##inc(t n){PRO("INC");return n+1;}
+#define KP0(t) t *t##kp(P(a,t),F1(f,t));
+#define KP1(t) t *t##kp(P(a,t),F1(f,t)){L(l,t);t i;t c=0;for(i=a[0];i>0;--i){if((*f)(a[i])){PS(l,t,a[i]);++c;}}a[0]=c;for(i=1;i<=c;++i){a[i]=l->v;PP(l,t);}PRO("KP");return a;}
 #define MP0(t) t *t##mp(F1(f,t),P(a,t));
 #define MP1(t) t *t##mp(F1(f,t),P(a,t)){t i;for(i=a[0];i>0;--i){a[i]=(*f)(a[i]);}PRO("MP");return a;}
 #define PP0(t) t##ND *t##pp(t##ND *l);
@@ -73,7 +76,7 @@ typedef double DB;
 typedef long double LD;
 ND(UC)
  
-
+ 
  
 HW0
  
@@ -91,8 +94,12 @@ RD0(UC)
  
 PP0(UC)
  
+KP0(UC)
 
 
+
+KP1(UC)
+ 
 PP1(UC)
  
 RD1(UC)
@@ -108,9 +115,8 @@ INC1(UC)
 MP1(UC)
  
 HW1
+ 
 
-UC *UCkp(P(a,UC),F1(f,UC));
-UC *UCkp(P(a,UC),F1(f,UC)){L(l,UC);UC i;UC c=0;for(i=a[0];i>0;--i){if((*f)(a[i])){PS(l,UC,a[i]);++c;}}a[0]=c;for(i=1;i<=c;++i){a[i]=l->v;PP(l,UC);}PRO("KP");return a;}
  
 int main()
 {
@@ -132,7 +138,7 @@ int main()
     a[2]='A';
     a[3]='L';
     MP(a,UC,inc);
-    UCkp(a,&UCinc);
+    KP(a,UC,inc);
     printf(" %c%c%c ",a[1],a[2],a[3]);
     L(list,UC);
     PS(list,UC,'Z');
