@@ -32,6 +32,7 @@
 #define ND(t) typedef struct next {t v;struct next*n;} t##ND;
  
 #define F1(n,t) t (*n)(t)
+#define F2(n,t) t (*n)(t,t)
 #define L(n,t) t##ND *n;n=NULL
 #define P(n,t) t *n
  
@@ -40,15 +41,15 @@
 #define HW0 void VOhw();
 #define HW1 void VOhw(){PRO("HW");}
 #define INC0(t) t t##inc(t n);
-#define INC1(t) t t##inc(t n){PRO("INC");return ++n;}
+#define INC1(t) t t##inc(t n){PRO("INC");return n+1;}
 #define MP0(t) t *t##mp(F1(f,t),P(a,t));
 #define MP1(t) t *t##mp(F1(f,t),P(a,t)){t i;for(i=a[0];i>0;--i){a[i]=(*f)(a[i]);}PRO("MP");return a;}
 #define PP0(t) t##ND *t##pp(t##ND *l);
 #define PP1(t) t##ND *t##pp(t##ND *l){t##ND *r;r=l->n;free(l);PRO("PP");return r;}
 #define PS0(t) t##ND *t##ps(t v,t##ND *l);
 #define PS1(t) t##ND *t##ps(t v,t##ND *l){L(r,t);r=(t##ND*)malloc(sizeof(t##ND));r->v=v;r->n=l;return r;}
-#define RD0(t) t t##rd(t f,t *a,t (*c)(t,t));
-#define RD1(t) t t##rd(t f,t *a,t (*c)(t,t)){t p;a[a[0]]=(*c)(a[a[0]],f);for(p=a[0]-1;p>0;--p){a[p]=(*c)(a[p],a[p+1]);}PRO("RD");return a[1];}
+#define RD0(t) t t##rd(t f,t *a,F2(c,t));
+#define RD1(t) t t##rd(t f,t *a,F2(c,t)){t p;a[a[0]]=(*c)(a[a[0]],f);for(p=a[0]-1;p>0;--p){a[p]=(*c)(a[p],a[p+1]);}PRO("RD");return a[1];}
 #define RR0(t) t *t##rr(t s);
 #define RR1(t) t *t##rr(t s){P(a,t);a=(t*)malloc((s+1)*sizeof(t));a[0]=s;PRO("RR");return a;}
  
@@ -89,9 +90,11 @@ AD0(UC)
 RD0(UC)
  
 PP0(UC)
+ 
+
 
 PP1(UC)
-
+ 
 RD1(UC)
  
 AD1(UC)
@@ -105,6 +108,9 @@ INC1(UC)
 MP1(UC)
  
 HW1
+
+UC *UCkp(P(a,UC),F1(f,UC));
+UC *UCkp(P(a,UC),F1(f,UC)){L(l,UC);UC i;UC c=0;for(i=a[0];i>0;--i){if((*f)(a[i])){PS(l,UC,a[i]);++c;}}a[0]=c;for(i=1;i<=c;++i){a[i]=l->v;PP(l,UC);}PRO("KP");return a;}
  
 int main()
 {
@@ -126,6 +132,7 @@ int main()
     a[2]='A';
     a[3]='L';
     MP(a,UC,inc);
+    UCkp(a,&UCinc);
     printf(" %c%c%c ",a[1],a[2],a[3]);
     L(list,UC);
     PS(list,UC,'Z');
