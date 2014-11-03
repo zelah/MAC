@@ -34,7 +34,8 @@
  
 #define F1(n,t) t (*n)(t)
 #define F2(n,t) t (*n)(t,t)
-#define L(n,t) t##ND *n;n=NULL
+#define L(n,t) t##ND *n
+#define LI(n,t) L(n,t);n=NULL
 #define P(n,t) t *n
  
 #define AD0(t) t t##ad(t x,t y);
@@ -43,18 +44,18 @@
 #define HW1 void VOhw(){PRO("HW");}
 #define INC0(t) t t##inc(t n);
 #define INC1(t) t t##inc(t n){PRO("INC");return n+1;}
-#define KP0(t) t *t##kp(P(a,t),F1(f,t));
-#define KP1(t) t *t##kp(P(a,t),F1(f,t)){L(l,t);t i;t c=0;for(i=a[0];i>0;--i){if((*f)(a[i])){PS(l,t,a[i]);++c;}}a[0]=c;for(i=1;i<=c;++i){a[i]=l->v;PP(l,t);}PRO("KP");return a;}
-#define MP0(t) t *t##mp(P(a,t),F1(f,t));
-#define MP1(t) t *t##mp(P(a,t),F1(f,t)){t i;for(i=a[0];i>0;--i){a[i]=(*f)(a[i]);}PRO("MP");return a;}
-#define PP0(t) t##ND *t##pp(t##ND *l);
-#define PP1(t) t##ND *t##pp(t##ND *l){t##ND *r;r=l->n;free(l);PRO("PP");return r;}
-#define PS0(t) t##ND *t##ps(t v,t##ND *l);
-#define PS1(t) t##ND *t##ps(t v,t##ND *l){L(r,t);r=(t##ND*)malloc(sizeof(t##ND));r->v=v;r->n=l;return r;}
+#define KP0(t) P(t##kp,t)(P(a,t),F1(f,t));
+#define KP1(t) P(t##kp,t)(P(a,t),F1(f,t)){LI(l,t);t i;t c=0;for(i=a[0];i>0;--i){if((*f)(a[i])){PS(l,t,a[i]);++c;}}a[0]=c;for(i=1;i<=c;++i){a[i]=l->v;PP(l,t);}PRO("KP");return a;}
+#define MP0(t) P(t##mp,t)(P(a,t),F1(f,t));
+#define MP1(t) P(t##mp,t)(P(a,t),F1(f,t)){t i;for(i=a[0];i>0;--i){a[i]=(*f)(a[i]);}PRO("MP");return a;}
+#define PP0(t) L(t##pp,t)(t##ND *l);
+#define PP1(t) L(t##pp,t)(t##ND *l){t##ND *r;r=l->n;free(l);PRO("PP");return r;}
+#define PS0(t) L(t##ps,t)(t v,t##ND *l);
+#define PS1(t) L(t##ps,t)(t v,t##ND *l){LI(r,t);r=(t##ND*)malloc(sizeof(t##ND));r->v=v;r->n=l;return r;}
 #define RD0(t) t t##rd(t f,t *a,F2(c,t));
 #define RD1(t) t t##rd(t f,t *a,F2(c,t)){t p;a[a[0]]=(*c)(a[a[0]],f);for(p=a[0]-1;p>0;--p){a[p]=(*c)(a[p],a[p+1]);}PRO("RD");return a[1];}
-#define RR0(t) t *t##rr(t s);
-#define RR1(t) t *t##rr(t s){P(a,t);a=(t*)malloc((s+1)*sizeof(t));a[0]=s;PRO("RR");return a;}
+#define RR0(t) P(t##rr,t)(t s);
+#define RR1(t) P(t##rr,t)(t s){P(a,t);a=(t*)malloc((s+1)*sizeof(t));a[0]=s;PRO("RR");return a;}
  
 typedef char CH;
 typedef unsigned char UC;
@@ -116,7 +117,11 @@ MP1(UC)
  
 HW1
  
- 
+//UC UCbtwo(P(a,UC),F2(c,UC));
+//UC UCbtwo(P(a,UC),F2(c,UC)){UC r;L(l,UC);UC i;for(i=a[0];i>0;--i){PS(l,UC,a[i]);}l=UCbtwo1(l,c);r=l->v;PP(l,UC);return r;}
+
+//L(UCbtwo1,UC)(L(l,UC),F2(c,UC));
+//L(UCbtwo1,UC)(L(l,UC),F2(c,UC)){
  
 int main()
 {
@@ -140,7 +145,7 @@ int main()
     MP(a,UC,inc);
     KP(a,UC,inc);
     printf(" %c%c%c ",a[1],a[2],a[3]);
-    L(list,UC);
+    LI(list,UC);
     PS(list,UC,'Z');
     printf(" %c ",list->v);
     UC u;
