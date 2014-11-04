@@ -117,11 +117,15 @@ MP1(UC)
  
 HW1
  
-//UC UCbtwo(P(a,UC),F2(c,UC));
-//UC UCbtwo(P(a,UC),F2(c,UC)){UC r;L(l,UC);UC i;for(i=a[0];i>0;--i){PS(l,UC,a[i]);}l=UCbtwo1(l,c);r=l->v;PP(l,UC);return r;}
+UC UCbtwo(P(a,UC),F2(c,UC));
+L(UCbtwo1,UC)(L(l,UC),F2(c,UC));
+L(UCbtwo2,UC)(L(l,UC),F2(c,UC));
 
-//L(UCbtwo1,UC)(L(l,UC),F2(c,UC));
-//L(UCbtwo1,UC)(L(l,UC),F2(c,UC)){
+UC UCbtwo(P(a,UC),F2(c,UC)){UC r;LI(l,UC);UC i;for(i=a[0];i>0;--i){PS(l,UC,a[i]);}l=UCbtwo1(l,c);r=l->v;PP(l,UC);return r;}
+ 
+L(UCbtwo1,UC)(L(l,UC),F2(c,UC)){if(l->n==NULL){return l;}else{return UCbtwo1(UCbtwo2(l,c),c);}}
+
+L(UCbtwo2,UC)(L(l,UC),F2(c,UC)){if((l==NULL)||(l->n==NULL)){return l;}else{UC r=(*c)(l->v,l->n->v);PP(l,UC);PP(l,UC);l=UCbtwo2(l,c);PS(l,UC,r);return l;}}
  
 int main()
 {
@@ -152,7 +156,7 @@ int main()
     a[1]=1;
     a[2]=2;
     a[3]=3;
-    RD(u,UC,0,a,ad);
+    u=UCbtwo(a,&UCad);
     printf(" %d ",u);
     free(a);
     PP(list,UC);
