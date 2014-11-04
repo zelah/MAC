@@ -3,6 +3,7 @@
 #include<time.h>
  
 #define AD(x,y) x=x+y
+#define BTWO(u,t,a,c) u=t##btwo(a,&t##c)
 #define DV(x,y) x=x/y
 #define HW VOhw()
 #define HV(x) x=x/2
@@ -40,6 +41,8 @@
  
 #define AD0(t) t t##ad(t x,t y);
 #define AD1(t) t t##ad(t x,t y){PRO("AD");return x+y;}
+#define BTWO0(t) t t##btwo(P(a,t),F2(c,t));L(t##btwo1,t)(L(l,t),F2(c,t));L(t##btwo2,t)(L(l,t),F2(c,t));
+#define BTWO1(t) t t##btwo(P(a,t),F2(c,t)){t r;LI(l,t);t i;for(i=a[0];i>0;--i){PS(l,t,a[i]);}l=t##btwo1(l,c);r=l->v;PP(l,t);return r;}L(t##btwo1,t)(L(l,t),F2(c,t)){if(l->n==NULL){return l;}else{return t##btwo1(t##btwo2(l,c),c);}}L(t##btwo2,t)(L(l,t),F2(c,t)){if((l==NULL)||(l->n==NULL)){return l;}else{t r=(*c)(l->v,l->n->v);PP(l,t);PP(l,t);l=t##btwo2(l,c);PS(l,t,r);return l;}}
 #define HW0 void VOhw();
 #define HW1 void VOhw(){PRO("HW");}
 #define INC0(t) t t##inc(t n);
@@ -97,7 +100,9 @@ PP0(UC)
  
 KP0(UC)
  
- 
+BTWO0(UC)
+
+BTWO1(UC)
  
 KP1(UC)
  
@@ -117,15 +122,7 @@ MP1(UC)
  
 HW1
  
-UC UCbtwo(P(a,UC),F2(c,UC));
-L(UCbtwo1,UC)(L(l,UC),F2(c,UC));
-L(UCbtwo2,UC)(L(l,UC),F2(c,UC));
 
-UC UCbtwo(P(a,UC),F2(c,UC)){UC r;LI(l,UC);UC i;for(i=a[0];i>0;--i){PS(l,UC,a[i]);}l=UCbtwo1(l,c);r=l->v;PP(l,UC);return r;}
- 
-L(UCbtwo1,UC)(L(l,UC),F2(c,UC)){if(l->n==NULL){return l;}else{return UCbtwo1(UCbtwo2(l,c),c);}}
-
-L(UCbtwo2,UC)(L(l,UC),F2(c,UC)){if((l==NULL)||(l->n==NULL)){return l;}else{UC r=(*c)(l->v,l->n->v);PP(l,UC);PP(l,UC);l=UCbtwo2(l,c);PS(l,UC,r);return l;}}
  
 int main()
 {
@@ -156,7 +153,7 @@ int main()
     a[1]=1;
     a[2]=2;
     a[3]=3;
-    u=UCbtwo(a,&UCad);
+    BTWO(u,UC,a,ad);
     printf(" %d ",u);
     free(a);
     PP(list,UC);
