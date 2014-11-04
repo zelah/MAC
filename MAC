@@ -3,7 +3,7 @@
 #include<time.h>
  
 #define AD(x,y) x=x+y
-#define BTWO(u,t,a,c) u=t##btwo(a,&t##c)
+#define BTWO(r,t,a,c) r=t##btwo(a,&t##c)
 #define DV(x,y) x=x/y
 #define HW VOhw()
 #define HV(x) x=x/2
@@ -101,7 +101,7 @@ PP0(UC)
 KP0(UC)
  
 BTWO0(UC)
-
+ 
 BTWO1(UC)
  
 KP1(UC)
@@ -122,7 +122,7 @@ MP1(UC)
  
 HW1
  
-
+ 
  
 int main()
 {
