@@ -3,7 +3,7 @@
 #include<time.h>
  
 #define AD(x,y) x=x+y
-#define BTWO(r,t,a,c) r=t##btwo(a,&t##c)
+#define B2(r,t,a,c) r=t##b2(a,&t##c)
 #define DV(x,y) x=x/y
 #define HW VOhw()
 #define HV(x) x=x/2
@@ -41,8 +41,8 @@
  
 #define AD0(t) t t##ad(t x,t y);
 #define AD1(t) t t##ad(t x,t y){PRO("AD");return x+y;}
-#define BTWO0(t) t t##btwo(P(a,t),F2(c,t));L(t##btwo1,t)(L(l,t),F2(c,t));L(t##btwo2,t)(L(l,t),F2(c,t));
-#define BTWO1(t) t t##btwo(P(a,t),F2(c,t)){t r;LI(l,t);t i;for(i=a[0];i>0;--i){PS(l,t,a[i]);}l=t##btwo1(l,c);r=l->v;PP(l,t);return r;}L(t##btwo1,t)(L(l,t),F2(c,t)){if(l->n==NULL){return l;}else{return t##btwo1(t##btwo2(l,c),c);}}L(t##btwo2,t)(L(l,t),F2(c,t)){if((l==NULL)||(l->n==NULL)){return l;}else{t r=(*c)(l->v,l->n->v);PP(l,t);PP(l,t);l=t##btwo2(l,c);PS(l,t,r);return l;}}
+#define B20(t) t t##b2(P(a,t),F2(c,t));L(t##b21,t)(L(l,t),F2(c,t));L(t##b22,t)(L(l,t),F2(c,t));
+#define B21(t) t t##b2(P(a,t),F2(c,t)){t r;LI(l,t);t i;for(i=a[0];i>0;--i){PS(l,t,a[i]);}l=t##b21(l,c);r=l->v;PP(l,t);return r;}L(t##b21,t)(L(l,t),F2(c,t)){if(l->n==NULL){return l;}else{return t##b21(t##b22(l,c),c);}}L(t##b22,t)(L(l,t),F2(c,t)){if((l==NULL)||(l->n==NULL)){return l;}else{t r=(*c)(l->v,l->n->v);PP(l,t);PP(l,t);l=t##b22(l,c);PS(l,t,r);return l;}}
 #define HW0 void VOhw();
 #define HW1 void VOhw(){PRO("HW");}
 #define INC0(t) t t##inc(t n);
@@ -100,9 +100,9 @@ PP0(UC)
  
 KP0(UC)
  
-BTWO0(UC)
+B20(UC)
  
-BTWO1(UC)
+B21(UC)
  
 KP1(UC)
  
@@ -153,7 +153,7 @@ int main()
     a[1]=1;
     a[2]=2;
     a[3]=3;
-    BTWO(u,UC,a,ad);
+    B2(u,UC,a,ad);
     printf(" %d ",u);
     free(a);
     PP(list,UC);
