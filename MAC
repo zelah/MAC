@@ -42,7 +42,7 @@
 #define AD0(t) t t##ad(t x,t y);
 #define AD1(t) t t##ad(t x,t y){PRO("AD");return x+y;}
 #define B2a(t) t t##b2(P(a,t),F2(c,t));L(t##b2a,t)(L(l,t),F2(c,t));L(t##b2b,t)(L(l,t),F2(c,t),L(r,t));L(t##b2c,t)(L(l,t),F2(c,t),L(r,t));
-#define B2b(t) t t##b2(P(a,t),F2(c,t)){t r;LI(l,t);t i;for(i=a[0];i>0;--i){PS(l,t,a[i]);}l=t##b2a(l,c);r=l->v;PP(l,t);return r;}L(t##b2a,t)(L(l,t),F2(c,t)){if(l->n==NULL){return l;}else{LI(r,UC);return t##b2a(t##b2b(l,c,r),c);}}
+#define B2b(t) t t##b2(P(a,t),F2(c,t)){t r;LI(l,t);t i;for(i=a[0];i>0;--i){PS(l,t,a[i]);}l=t##b2a(l,c);r=l->v;PP(l,t);return r;}L(t##b2a,t)(L(l,t),F2(c,t)){if(l->n==NULL){return l;}else{LI(r,UC);return t##b2a(t##b2b(l,c,r),c);}}L(t##b2b,t)(L(l,t),F2(c,t),L(r,t)){if((l==NULL)&&(r->n==NULL)){return r;}else if(l==NULL){return t##b2c(r,c,l);}else if((l->n==NULL)&&(r==NULL)){return l;}else if(l->n==NULL){PS(r,t,l->v);PP(l,t);return t##b2c(r,c,l);}else{PS(r,t,(*c)(l->v,l->n->v));PP(l,t);PP(l,t);return t##b2b(l,c,r);}}L(t##b2c,t)(L(l,t),F2(c,t),L(r,t)){if((l==NULL)&&(r->n==NULL)){return r;}else if(l==NULL){return t##b2b(r,c,l);}else if((l->n==NULL)&&(r==NULL)){return l;}else if(l->n==NULL){PS(r,t,l->v);PP(l,t);return t##b2b(r,c,l);}else{PS(r,t,(*c)(l->n->v,l->v));PP(l,t);PP(l,t);return t##b2c(l,c,r);}}
 #define HW0 void VOhw();
 #define HW1 void VOhw(){PRO("HW");}
 #define INC0(t) t t##inc(t n);
@@ -122,10 +122,8 @@ MP1(UC)
  
 HW1
  
-L(UCb2b,UC)(L(l,UC),F2(c,UC),L(r,UC)){if((l==NULL)&&(r->n==NULL)){return r;}else if(l==NULL){return UCb2c(r,c,l);}else if((l->n==NULL)&&(r==NULL)){return l;}else if(l->n==NULL){PS(r,UC,l->v);PP(l,UC);return UCb2c(r,c,l);}else{PS(r,UC,(*c)(l->v,l->n->v));PP(l,UC);PP(l,UC);return UCb2b(l,c,r);}}
 
- L(UCb2c,UC)(L(l,UC),F2(c,UC),L(r,UC)){if((l==NULL)&&(r->n==NULL)){return r;}else if(l==NULL){return UCb2b(r,c,l);}else if((l->n==NULL)&&(r==NULL)){return l;}else if(l->n==NULL){PS(r,UC,l->v);PP(l,UC);return UCb2b(r,c,l);}else{PS(r,UC,(*c)(l->n->v,l->v));PP(l,UC);PP(l,UC);return UCb2c(l,c,r);}}
-
+ 
 int main()
 {
   PROFILE;
