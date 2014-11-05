@@ -60,7 +60,7 @@
 #define RR0(t) P(t##rr,t)(t s);
 #define RR1(t) P(t##rr,t)(t s){P(a,t);a=(t*)malloc((s+1)*sizeof(t));a[0]=s;PRO("RR");return a;}
 #define SB0(t) t t##sb(t x,t y);
-#define SB1(t) t t##sb(t x,t y){return x-y;}
+#define SB1(t) t t##sb(t x,t y){PRO("SB");return x-y;}
  
 typedef char CH;
 typedef unsigned char UC;
@@ -103,11 +103,11 @@ PP0(UC)
 KP0(UC)
  
 B2a(UC)
-
+ 
 SB0(UC)
-
+ 
 SB1(UC)
-
+ 
 B2b(UC)
  
 KP1(UC)
@@ -128,7 +128,7 @@ MP1(UC)
  
 HW1
  
-
+ 
  
 int main()
 {
