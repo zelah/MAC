@@ -41,8 +41,8 @@
  
 #define AD0(t) t t##ad(t x,t y);
 #define AD1(t) t t##ad(t x,t y){PRO("AD");return x+y;}
-#define B20(t) t t##b2(P(a,t),F2(c,t));L(t##b21,t)(L(l,t),F2(c,t));L(t##b22,t)(L(l,t),F2(c,t));
-#define B21(t) t t##b2(P(a,t),F2(c,t)){t r;LI(l,t);t i;for(i=a[0];i>0;--i){PS(l,t,a[i]);}l=t##b21(l,c);r=l->v;PP(l,t);return r;}L(t##b21,t)(L(l,t),F2(c,t)){if(l->n==NULL){return l;}else{return t##b21(t##b22(l,c),c);}}L(t##b22,t)(L(l,t),F2(c,t)){if((l==NULL)||(l->n==NULL)){return l;}else{t r=(*c)(l->v,l->n->v);PP(l,t);PP(l,t);l=t##b22(l,c);PS(l,t,r);return l;}}
+#define B2a(t) t t##b2(P(a,t),F2(c,t));L(t##b2a,t)(L(l,t),F2(c,t));L(t##b2b,t)(L(l,t),F2(c,t));
+#define B2b(t) t t##b2(P(a,t),F2(c,t)){t r;LI(l,t);t i;for(i=a[0];i>0;--i){PS(l,t,a[i]);}l=t##b2a(l,c);r=l->v;PP(l,t);return r;}L(t##b2a,t)(L(l,t),F2(c,t)){if(l->n==NULL){return l;}else{return t##b2a(t##b2b(l,c),c);}}L(t##b2b,t)(L(l,t),F2(c,t)){if((l==NULL)||(l->n==NULL)){return l;}else{t r=(*c)(l->v,l->n->v);PP(l,t);PP(l,t);l=t##b2b(l,c);PS(l,t,r);return l;}}
 #define HW0 void VOhw();
 #define HW1 void VOhw(){PRO("HW");}
 #define INC0(t) t t##inc(t n);
@@ -100,9 +100,9 @@ PP0(UC)
  
 KP0(UC)
  
-B20(UC)
+B2a(UC)
  
-B21(UC)
+B2b(UC)
  
 KP1(UC)
  
