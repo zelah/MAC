@@ -43,6 +43,8 @@
 #define AD1(t) t t##ad(t x,t y){PRO("AD");return x+y;}
 #define B2a(t) t t##b2(P(a,t),F2(c,t));L(t##b2a,t)(L(l,t),F2(c,t));L(t##b2b,t)(L(l,t),F2(c,t),L(r,t));L(t##b2c,t)(L(l,t),F2(c,t),L(r,t));
 #define B2b(t) t t##b2(P(a,t),F2(c,t)){t r;LI(l,t);t i;for(i=a[0];i>0;--i){PS(l,t,a[i]);}l=t##b2a(l,c);r=l->v;PP(l,t);return r;}L(t##b2a,t)(L(l,t),F2(c,t)){if(l->n==NULL){return l;}else{LI(r,UC);return t##b2a(t##b2b(l,c,r),c);}}L(t##b2b,t)(L(l,t),F2(c,t),L(r,t)){if((l==NULL)&&(r->n==NULL)){return r;}else if(l==NULL){return t##b2c(r,c,l);}else if((l->n==NULL)&&(r==NULL)){return l;}else if(l->n==NULL){PS(r,t,l->v);PP(l,t);return t##b2c(r,c,l);}else{PS(r,t,(*c)(l->v,l->n->v));PP(l,t);PP(l,t);return t##b2b(l,c,r);}}L(t##b2c,t)(L(l,t),F2(c,t),L(r,t)){if((l==NULL)&&(r->n==NULL)){return r;}else if(l==NULL){return t##b2b(r,c,l);}else if((l->n==NULL)&&(r==NULL)){return l;}else if(l->n==NULL){PS(r,t,l->v);PP(l,t);return t##b2b(r,c,l);}else{PS(r,t,(*c)(l->n->v,l->v));PP(l,t);PP(l,t);return t##b2c(l,c,r);}}
+#define DV0(t) t t##dv(t x,t y);
+#define DV1(t) t t##dv(t x,t y){PRO("DV");return x/y;}
 #define HW0 void VOhw();
 #define HW1 void VOhw(){PRO("HW");}
 #define INC0(t) t t##inc(t n);
@@ -51,6 +53,8 @@
 #define KP1(t) P(t##kp,t)(P(a,t),F1(f,t)){LI(l,t);t i;t c=0;for(i=a[0];i>0;--i){if((*f)(a[i])){PS(l,t,a[i]);++c;}}a[0]=c;for(i=1;i<=c;++i){a[i]=l->v;PP(l,t);}PRO("KP");return a;}
 #define MP0(t) P(t##mp,t)(P(a,t),F1(f,t));
 #define MP1(t) P(t##mp,t)(P(a,t),F1(f,t)){t i;for(i=a[0];i>0;--i){a[i]=(*f)(a[i]);}PRO("MP");return a;}
+#define MU0(t) t t##mu(t x,t y);
+#define MU1(t) t t##mu(t x,t y){PRO("MU");return x*y;}
 #define PP0(t) L(t##pp,t)(t##ND *l);
 #define PP1(t) L(t##pp,t)(t##ND *l){t##ND *r;r=l->n;free(l);PRO("PP");return r;}
 #define PS0(t) L(t##ps,t)(t v,t##ND *l);
@@ -105,6 +109,14 @@ KP0(UC)
 B2a(UC)
  
 SB0(UC)
+
+DV0(UC)
+
+MU0(UC)
+
+MU1(UC)
+
+DV1(UC)
  
 SB1(UC)
  
@@ -156,10 +168,10 @@ int main()
     PS(list,UC,'Z');
     printf(" %c ",list->v);
     UC u;
-    a[1]=3;
+    a[1]=4;
     a[2]=2;
     a[3]=1;
-    B2(u,UC,a,sb);
+    B2(u,UC,a,mu);
     printf(" %d ",u);
     free(a);
     PP(list,UC);
