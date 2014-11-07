@@ -42,7 +42,7 @@
 #define AD0(t) t t##ad(t x,t y);
 #define AD1(t) t t##ad(t x,t y){PRO("AD");return x+y;}
 #define B2a(t) t t##b2(P(a,t),F2(c,t));L(t##b2a,t)(L(l,t),F2(c,t));L(t##b2b,t)(L(l,t),F2(c,t),L(r,t));L(t##b2c,t)(L(l,t),F2(c,t),L(r,t));
-#define B2b(t) t t##b2(P(a,t),F2(c,t)){t r;LI(l,t);t i;for(i=a[0];i>0;--i){PS(l,t,a[i]);}l=t##b2a(l,c);r=l->v;PP(l,t);return r;}L(t##b2a,t)(L(l,t),F2(c,t)){if(l->n==NULL){return l;}else{LI(r,UC);return t##b2a(t##b2b(l,c,r),c);}}L(t##b2b,t)(L(l,t),F2(c,t),L(r,t)){if((l==NULL)&&(r->n==NULL)){return r;}else if(l==NULL){return t##b2c(r,c,l);}else if((l->n==NULL)&&(r==NULL)){return l;}else if(l->n==NULL){PS(r,t,l->v);PP(l,t);return t##b2c(r,c,l);}else{PS(r,t,(*c)(l->v,l->n->v));PP(l,t);PP(l,t);return t##b2b(l,c,r);}}L(t##b2c,t)(L(l,t),F2(c,t),L(r,t)){if((l==NULL)&&(r->n==NULL)){return r;}else if(l==NULL){return t##b2b(r,c,l);}else if((l->n==NULL)&&(r==NULL)){return l;}else if(l->n==NULL){PS(r,t,l->v);PP(l,t);return t##b2b(r,c,l);}else{PS(r,t,(*c)(l->n->v,l->v));PP(l,t);PP(l,t);return t##b2c(l,c,r);}}
+#define B2b(t) t t##b2(P(a,t),F2(c,t)){t r;LI(l,t);t i;for(i=a[0];i>0;--i){PS(l,t,a[i]);}l=t##b2a(l,c);r=l->v;PP(l,t);PRO("B2");return r;}L(t##b2a,t)(L(l,t),F2(c,t)){if(l->n==NULL){return l;}else{LI(r,UC);return t##b2a(t##b2b(l,c,r),c);}}L(t##b2b,t)(L(l,t),F2(c,t),L(r,t)){if((l==NULL)&&(r->n==NULL)){return r;}else if(l==NULL){return t##b2c(r,c,l);}else if((l->n==NULL)&&(r==NULL)){return l;}else if(l->n==NULL){PS(r,t,l->v);PP(l,t);return t##b2c(r,c,l);}else{PS(r,t,(*c)(l->v,l->n->v));PP(l,t);PP(l,t);return t##b2b(l,c,r);}}L(t##b2c,t)(L(l,t),F2(c,t),L(r,t)){if((l==NULL)&&(r->n==NULL)){return r;}else if(l==NULL){return t##b2b(r,c,l);}else if((l->n==NULL)&&(r==NULL)){return l;}else if(l->n==NULL){PS(r,t,l->v);PP(l,t);return t##b2b(r,c,l);}else{PS(r,t,(*c)(l->n->v,l->v));PP(l,t);PP(l,t);return t##b2c(l,c,r);}}
 #define DV0(t) t t##dv(t x,t y);
 #define DV1(t) t t##dv(t x,t y){PRO("DV");return x/y;}
 #define HW0 void VOhw();
@@ -58,7 +58,7 @@
 #define PP0(t) L(t##pp,t)(t##ND *l);
 #define PP1(t) L(t##pp,t)(t##ND *l){t##ND *r;r=l->n;free(l);PRO("PP");return r;}
 #define PS0(t) L(t##ps,t)(t v,t##ND *l);
-#define PS1(t) L(t##ps,t)(t v,t##ND *l){LI(r,t);r=(t##ND*)malloc(sizeof(t##ND));r->v=v;r->n=l;return r;}
+#define PS1(t) L(t##ps,t)(t v,t##ND *l){LI(r,t);r=(t##ND*)malloc(sizeof(t##ND));r->v=v;r->n=l;PRO("PS");return r;}
 #define RD0(t) t t##rd(t f,t *a,F2(c,t));
 #define RD1(t) t t##rd(t f,t *a,F2(c,t)){t p;a[a[0]]=(*c)(a[a[0]],f);for(p=a[0]-1;p>0;--p){a[p]=(*c)(a[p],a[p+1]);}PRO("RD");return a[1];}
 #define RR0(t) P(t##rr,t)(t s);
@@ -109,13 +109,13 @@ KP0(UC)
 B2a(UC)
  
 SB0(UC)
-
+ 
 DV0(UC)
-
+ 
 MU0(UC)
-
+ 
 MU1(UC)
-
+ 
 DV1(UC)
  
 SB1(UC)
