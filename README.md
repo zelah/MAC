@@ -1,4 +1,4 @@
-MAC
+MECMAC
 ===
 
-My Advanced C Macros
+My Extensive C Macros
