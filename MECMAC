@@ -28,9 +28,9 @@
 #define PRO0(s)
 #define PRO1(s) {int r=rand()/(RAND_MAX/PRO3);if(r==0){printf(" :%s ",s);fflush(stdout);}}
 #define PRO2(s) {time_t t=time(NULL);int r=rand()/(RAND_MAX/PRO3);if(PROSTART){if(PROSTART==PRO4){PROSTART=0;}printf(" :%s%3d ",s,(char)(t%100));fflush(stdout);printf("%c",1/PROSTART);++PROSTART;}if(r){;}else{PROSTART=1;}}
-#define PRO3 777
+#define PRO3 333
 //raise number to decrease sampling frequency
-#define PRO4 2048
+#define PRO4 1024
 //adjust window size for use with PRO2
  
 #define ND(t) typedef struct next {t v;struct next*n;} t##ND;
@@ -148,7 +148,7 @@ int main()
 {
   PROFILE;
   UL j;
-  for(j=1;j<99;++j)
+  for(j=1;j<333;++j)
   {
     DB x=1.000001;
     UL i;
