@@ -153,7 +153,7 @@ int main()
     DB x=1.000001;
     UL i;
     HW;
-    for(i=1;i<999999;++i)
+    for(i=1;i<7777777;++i)
     {
       if(x>2){HV(x);}
       SQ(x);
