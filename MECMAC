@@ -20,7 +20,7 @@
  
 #define PROFILE srand(time(NULL))
 //put PROFILE; at the top of main()
-#define PRO(s) PRO2(s)
+#define PRO(s) PRO1(s)
 //put PRO("functionName"); in every function
 //PRO0(s) profiling off
 //PRO1(s) profiling on
@@ -33,7 +33,7 @@
 #define PRO4 1024
 //adjust window size for use with PRO2
  
-#define ND(t) typedef struct next {t v;struct next*n;} t##ND;
+#define ND(t) typedef struct t##N {t v;struct t##N*n;} t##ND;
  
 #define F1(n,t) t (*n)(t)
 #define F2(n,t) t (*n)(t,t)
@@ -86,7 +86,9 @@ typedef signed long long SL;
 typedef float FL;
 typedef double DB;
 typedef long double LD;
+typedef P(CHP,CH);
 ND(UC)
+ND(CHP)
  
 UL PROSTART=0;
  
@@ -116,6 +118,14 @@ DV0(UC)
  
 MU0(UC)
  
+PS0(CHP)
+
+PP0(CHP)
+
+PP1(CHP)
+
+PS1(CHP)
+
 MU1(UC)
  
 DV1(UC)
@@ -148,7 +158,7 @@ int main()
 {
   PROFILE;
   UL j;
-  for(j=1;j<333;++j)
+  for(j=1;j<22;++j)
   {
     DB x=1.000001;
     UL i;
@@ -177,6 +187,10 @@ int main()
     printf(" %d ",u);
     free(a);
     PP(list,UC);
+    LI(sl,CHP);
+    PS(sl,CHP,"zelah");
+    printf(" %s ",sl->v);
+    PP(sl,CHP);
     printf("\n\n");
   }
   return 0;
