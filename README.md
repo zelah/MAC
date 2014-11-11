@@ -1,4 +1,4 @@
-MECMAC
+MAC
 ===
 
 My Extensive C Macros
