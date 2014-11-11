@@ -179,12 +179,12 @@ int main()
     LI(list,CH);
     PS(list,CH,'Z');
     printf(" %c ",list->v);
-    CH u;
+    CH c;
     a[1]=4;
     a[2]=2;
     a[3]=1;
-    B2(u,CH,a,ad);
-    printf(" %d ",u);
+    B2(c,CH,a,ad);
+    printf(" %d ",c);
     free(a);
     PP(list,CH);
     LI(sl,CHP);
