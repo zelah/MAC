@@ -44,7 +44,7 @@
 #define AD0(t) t t##ad(t x,t y);
 #define AD1(t) t t##ad(t x,t y){PRO("AD");return x+y;}
 #define B2a(t) t t##b2(P(a,t),F2(c,t));L(t##b2a,t)(L(l,t),F2(c,t));L(t##b2b,t)(L(l,t),F2(c,t),L(r,t));L(t##b2c,t)(L(l,t),F2(c,t),L(r,t));
-#define B2b(t) t t##b2(P(a,t),F2(c,t)){t r;LI(l,t);t i;for(i=a[0];i>0;--i){PS(l,t,a[i]);}l=t##b2a(l,c);r=l->v;PP(l,t);PRO("B2");return r;}L(t##b2a,t)(L(l,t),F2(c,t)){if(l->n==NULL){return l;}else{LI(r,UC);return t##b2a(t##b2b(l,c,r),c);}}L(t##b2b,t)(L(l,t),F2(c,t),L(r,t)){if((l==NULL)&&(r->n==NULL)){return r;}else if(l==NULL){return t##b2c(r,c,l);}else if((l->n==NULL)&&(r==NULL)){return l;}else if(l->n==NULL){PS(r,t,l->v);PP(l,t);return t##b2c(r,c,l);}else{PS(r,t,(*c)(l->v,l->n->v));PP(l,t);PP(l,t);return t##b2b(l,c,r);}}L(t##b2c,t)(L(l,t),F2(c,t),L(r,t)){if((l==NULL)&&(r->n==NULL)){return r;}else if(l==NULL){return t##b2b(r,c,l);}else if((l->n==NULL)&&(r==NULL)){return l;}else if(l->n==NULL){PS(r,t,l->v);PP(l,t);return t##b2b(r,c,l);}else{PS(r,t,(*c)(l->n->v,l->v));PP(l,t);PP(l,t);return t##b2c(l,c,r);}}
+#define B2b(t) t t##b2(P(a,t),F2(c,t)){t r;LI(l,t);t i;for(i=a[0];i>0;--i){PS(l,t,a[i]);}l=t##b2a(l,c);r=l->v;PP(l,t);PRO("B2");return r;}L(t##b2a,t)(L(l,t),F2(c,t)){if(l->n==NULL){return l;}else{LI(r,t);return t##b2a(t##b2b(l,c,r),c);}}L(t##b2b,t)(L(l,t),F2(c,t),L(r,t)){if((l==NULL)&&(r->n==NULL)){return r;}else if(l==NULL){return t##b2c(r,c,l);}else if((l->n==NULL)&&(r==NULL)){return l;}else if(l->n==NULL){PS(r,t,l->v);PP(l,t);return t##b2c(r,c,l);}else{PS(r,t,(*c)(l->v,l->n->v));PP(l,t);PP(l,t);return t##b2b(l,c,r);}}L(t##b2c,t)(L(l,t),F2(c,t),L(r,t)){if((l==NULL)&&(r->n==NULL)){return r;}else if(l==NULL){return t##b2b(r,c,l);}else if((l->n==NULL)&&(r==NULL)){return l;}else if(l->n==NULL){PS(r,t,l->v);PP(l,t);return t##b2b(r,c,l);}else{PS(r,t,(*c)(l->n->v,l->v));PP(l,t);PP(l,t);return t##b2c(l,c,r);}}
 #define DV0(t) t t##dv(t x,t y);
 #define DV1(t) t t##dv(t x,t y){PRO("DV");return x/y;}
 #define HW0 void VOhw();
@@ -87,68 +87,68 @@ typedef float FL;
 typedef double DB;
 typedef long double LD;
 typedef P(CHP,CH);
-ND(UC)
+ND(CH)
 ND(CHP)
  
 UL PROSTART=0;
  
 HW0
  
-MP0(UC)
+MP0(CH)
  
-INC0(UC)
+INC0(CH)
  
-RR0(UC)
+RR0(CH)
  
-PS0(UC)
+PS0(CH)
  
-AD0(UC)
+AD0(CH)
  
-RD0(UC)
+RD0(CH)
  
-PP0(UC)
+PP0(CH)
  
-KP0(UC)
+KP0(CH)
  
-B2a(UC)
+B2a(CH)
  
-SB0(UC)
+SB0(CH)
  
-DV0(UC)
+DV0(CH)
  
-MU0(UC)
+MU0(CH)
  
 PS0(CHP)
-
+ 
 PP0(CHP)
-
+ 
 PP1(CHP)
-
+ 
 PS1(CHP)
-
-MU1(UC)
  
-DV1(UC)
+MU1(CH)
  
-SB1(UC)
+DV1(CH)
  
-B2b(UC)
+SB1(CH)
  
-KP1(UC)
+B2b(CH)
  
-PP1(UC)
+KP1(CH)
  
-RD1(UC)
+PP1(CH)
  
-AD1(UC)
+RD1(CH)
  
-PS1(UC)
+AD1(CH)
  
-RR1(UC)
+PS1(CH)
  
-INC1(UC)
+RR1(CH)
  
-MP1(UC)
+INC1(CH)
+ 
+MP1(CH)
  
 HW1
  
@@ -169,24 +169,24 @@ int main()
       SQ(x);
     }
     printf("%f",x);
-    RR(a,UC,3);
+    RR(a,CH,3);
     a[1]='H';
     a[2]='A';
     a[3]='L';
-    MP(a,UC,inc);
-    KP(a,UC,inc);
+    MP(a,CH,inc);
+    KP(a,CH,inc);
     printf(" %c%c%c ",a[1],a[2],a[3]);
-    LI(list,UC);
-    PS(list,UC,'Z');
+    LI(list,CH);
+    PS(list,CH,'Z');
     printf(" %c ",list->v);
-    UC u;
+    CH u;
     a[1]=4;
     a[2]=2;
     a[3]=1;
-    B2(u,UC,a,ad);
+    B2(u,CH,a,ad);
     printf(" %d ",u);
     free(a);
-    PP(list,UC);
+    PP(list,CH);
     LI(sl,CHP);
     PS(sl,CHP,"zelah");
     printf(" %s ",sl->v);
