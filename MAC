@@ -2,7 +2,7 @@
 #include<stdlib.h>
 #include<string.h>
 #include<time.h>
-
+ 
 #define AD(x,y) x+=y
 #define B2(r,t,a,c) r=t##b2(a,&t##c)
 #define DV(x,y) x/=y
@@ -18,7 +18,7 @@
 #define SB(x,y) x-=y
 #define SQ(x) x*=x
 #define TW(x) x*=2
-
+ 
 #define PROFILE PROSEEN=NULL;srand(time(NULL))
 //put PROFILE; at the top of main()
 #define PRO(s) PRO1(s)
@@ -30,21 +30,21 @@
 //#define PRO(s) PRO2(s) 
 //verbose halting
 #define PRO0(s)
-#define PRO1(s) {L(q,CHP);q=PROSEEN;while((q!=NULL)&&(strcmp(q->v,s))){q=q->n;}if(q==NULL){LI(t,CHP);t=(CHPND*)malloc(sizeof(CHPND));t->v=s;t->n=PROSEEN;PROSEEN=t;;int r=rand()/(RAND_MAX/PRO3);if(r==0){printf(" :%s ",s);fflush(stdout);}}}
+#define PRO1(s) {int r=rand()/(RAND_MAX/PRO3);if(r==0){L(q,CHP);q=PROSEEN;while((q!=NULL)&&(strcmp(q->v,s))){q=q->n;}if(q==NULL){LI(t,CHP);t=(CHPND*)malloc(sizeof(CHPND));t->v=s;t->n=PROSEEN;PROSEEN=t;printf(" :%s ",s);fflush(stdout);}}}
 #define PRO2(s) {time_t t=time(NULL);int r=rand()/(RAND_MAX/PRO3);if(PROSTART){if(PROSTART==PRO4){PROSTART=0;}printf(" :%s%3d ",s,(char)(t%100));fflush(stdout);printf("%c",1/PROSTART);++PROSTART;}if(r){;}else{PROSTART=1;}}
 #define PRO3 333
 //raise number to decrease sampling frequency
 #define PRO4 1024
 //adjust window size for use with PRO2
-
+ 
 #define ND(t) typedef struct t##N {t v;struct t##N*n;} t##ND;
-
+ 
 #define F1(n,t) t (*n)(t)
 #define F2(n,t) t (*n)(t,t)
 #define L(n,t) t##ND *n
 #define LI(n,t) L(n,t);n=NULL
 #define P(n,t) t *n
-
+ 
 #define AD0(t) t t##ad(t x,t y);
 #define AD1(t) t t##ad(t x,t y){PRO("AD");return x+y;}
 #define B2a(t) t t##b2(P(a,t),F2(c,t));L(t##b2a,t)(L(l,t),F2(c,t));L(t##b2b,t)(L(l,t),F2(c,t),L(r,t));L(t##b2c,t)(L(l,t),F2(c,t),L(r,t));
@@ -71,7 +71,7 @@
 #define RR1(t) P(t##rr,t)(t s){P(a,t);a=(t*)malloc((s+1)*sizeof(t));a[0]=s;PRO("RR");return a;}
 #define SB0(t) t t##sb(t x,t y);
 #define SB1(t) t t##sb(t x,t y){PRO("SB");return x-y;}
-
+ 
 typedef char CH;
 typedef unsigned char UC;
 typedef signed char SC;
@@ -93,72 +93,72 @@ typedef long double LD;
 typedef P(CHP,CH);
 ND(CH)
 ND(CHP)
-
+ 
 UL PROSTART=0;
 L(PROSEEN,CHP);
-
+ 
 HW0
-
+ 
 MP0(CH)
-
+ 
 INC0(CH)
-
+ 
 RR0(CH)
-
+ 
 PS0(CH)
-
+ 
 AD0(CH)
-
+ 
 RD0(CH)
-
+ 
 PP0(CH)
-
+ 
 KP0(CH)
-
+ 
 B2a(CH)
-
+ 
 SB0(CH)
-
+ 
 DV0(CH)
-
+ 
 MU0(CH)
-
+ 
 PS0(CHP)
-
+ 
 PP0(CHP)
-
+ 
 PP1(CHP)
-
+ 
 PS1(CHP)
-
+ 
 MU1(CH)
-
+ 
 DV1(CH)
-
+ 
 SB1(CH)
-
+ 
 B2b(CH)
-
+ 
 KP1(CH)
-
+ 
 PP1(CH)
-
+ 
 RD1(CH)
-
+ 
 AD1(CH)
-
+ 
 PS1(CH)
-
+ 
 RR1(CH)
-
+ 
 INC1(CH)
-
+ 
 MP1(CH)
-
+ 
 HW1
-
-
-
+ 
+ 
+ 
 int main()
 {
   PROFILE;
