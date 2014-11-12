@@ -3,21 +3,21 @@
 #include<string.h>
 #include<time.h>
  
-#define AD(x,y) x+=y
+#define AD(x,y) PRO("AD");x+=y
 #define B2(r,t,a,c) r=t##b2(a,&t##c)
-#define DV(x,y) x/=y
-#define HV(x) x/=2
+#define DV(x,y) PRO("DV");x/=y
+#define HV(x) PRO("HV");x/=2
 #define HW VOhw()
 #define KP(a,t,f) t##kp(a,&t##f)
 #define MP(a,t,f) t##mp(a,&t##f)
-#define MU(x,y) x*=y
+#define MU(x,y) PRO("MU");x*=y
 #define PP(l,t) l=t##pp(l)
 #define PS(l,t,v) l=t##ps(v,l)
 #define RD(r,t,f,a,c) r=t##rd(f,a,&t##c);
 #define RR(a,t,s) P(a,t);a=t##rr(s)
-#define SB(x,y) x-=y
-#define SQ(x) x*=x
-#define TW(x) x*=2
+#define SB(x,y) PRO("SB");x-=y
+#define SQ(x) PRO("SQ");x*=x
+#define TW(x) PRO("TW");x*=2
  
 #define PROFILE PROSEEN=NULL;srand(time(NULL))
 //put PROFILE; at the top of main()
