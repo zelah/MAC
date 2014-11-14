@@ -20,15 +20,17 @@
 #define TW(x) PRO("TW");x*=2
  
 #define PROFILE PROSEEN=NULL;srand(time(NULL))
-//PROFILE; at the top of main()
+//PROFILE;
+//at the top of main()
 #define PRO(s) PRO1(s)
-//PRO("functionName"); in every function
+//PRO("functionName");
+//in every function
 //#define PRO(s) PRO0(s)
 //profiling off
 //#define PRO(s) PRO1(s)
 //profiling on
 //#define PRO(s) PRO2(s) 
-//verbose halting
+//verbose halting mode
 #define PRO0(s)
 #define PRO1(s) {int r=rand()/(RAND_MAX/PRO3);if(r==0){L(q,CHP);q=PROSEEN;while((q!=NULL)&&(strcmp(q->v,s))){q=q->n;}if(q==NULL){LI(t,CHP);t=(CHPND*)malloc(sizeof(CHPND));t->v=s;t->n=PROSEEN;PROSEEN=t;printf(" :%s ",s);fflush(stdout);}}}
 #define PRO2(s) {time_t t=time(NULL);int r=rand()/(RAND_MAX/PRO3);if(PROSTART){if(PROSTART==PRO4){PROSTART=0;}printf(" %d:%s ",(char)(t%100),s);fflush(stdout);printf("%c",1/PROSTART);++PROSTART;}if(r){;}else{PROSTART=1;}}
