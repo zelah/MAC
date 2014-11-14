@@ -37,6 +37,7 @@
 #define PRO4 1024
 //adjust window size for use with PRO2
 //#define P(n,t) t *n
+//#define ND(t) typedef struct t##N {t v;struct t##N*n;} t##N
 //typedef char CH;
 //typedef P(CHP,CH);
 //ND(CHP)
