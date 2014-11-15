@@ -34,26 +34,26 @@
 #define PRO0(s)
 #define PRO1(s) {int r=rand()/(RAND_MAX/PRO3);if(r==0){int c=1;L(q,CHP);q=PROSEEN;while((q!=NULL)&&(strcmp(q->v,s))){q=q->n;++c;}if(q==NULL){LI(t,CHP);t=(CHPND*)malloc(sizeof(CHPND));t->v=s;t->n=PROSEEN;PROSEEN=t;printf(" %d:%s ",c,s);fflush(stdout);}}}
 #define PRO2(s) {time_t t=time(NULL);int r=rand()/(RAND_MAX/PRO3);if(PROSTART){if(PROSTART==PRO4){PROSTART=0;}printf(" %d:%s ",(char)(t%100),s);fflush(stdout);printf("%c",1/PROSTART);++PROSTART;}if(r){;}else{PROSTART=1;}}
-#define PRO3 333
-                                                                                                                                                                                                                                             //raise number to decrease sampling
+#define PRO3 1024
+//raise number to decrease sampling
 #define PRO4 1024
-                                                                                                                                                                                                                                             //adjust output size for use with PRO2
-                                                                                                                                                                                                                                             //#define P(n,t) t *n
-                                                                                                                                                                                                                                             //#define ND(t) typedef struct t##N {t v;struct t##N*n;} t##N
-                                                                                                                                                                                                                                             //typedef char CH;
-                                                                                                                                                                                                                                             //typedef P(CHP,CH);
-                                                                                                                                                                                                                                             //ND(CHP)
-                                                                                                                                                                                                                                             //UL PROSTART=0;
-                                                                                                                                                                                                                                             //L(PROSEEN,CHP);
-                                                                                                                                                                                                                                             
+//adjust output size for use with PRO
+//#define P(n,t) t *n
+//#define ND(t) typedef struct t##N {t v;struct t##N*n;} t##N
+//typedef char CH;
+//typedef P(CHP,CH);
+//ND(CHP)
+//UL PROSTART=0;
+//L(PROSEEN,CHP);
+                                                                 
 #define ND(t) typedef struct t##N {t v;struct t##N*n;} t##ND;
-                                                                                                                                                                                                                                             
+                                                                                                                                                                                    
 #define F1(n,t) t (*n)(t)
 #define F2(n,t) t (*n)(t,t)
 #define L(n,t) t##ND *n
 #define LI(n,t) L(n,t);n=NULL
 #define P(n,t) t *n
-                                                                                                                                                                                                                                             
+                                                                                                                                                                                            
 #define AD0(t) t t##ad(t x,t y);
 #define AD1(t) t t##ad(t x,t y){PRO("AD");return x+y;}
 #define B2a(t) t t##b2(P(a,t),F2(c,t));L(t##b2a,t)(L(l,t),F2(c,t));L(t##b2b,t)(L(l,t),F2(c,t),L(r,t));L(t##b2c,t)(L(l,t),F2(c,t),L(r,t));
@@ -65,19 +65,19 @@
 #define INC0(t) t t##inc(t n);
 #define INC1(t) t t##inc(t n){PRO("INC");return n+1;}
 #define KP0(t) P(t##kp,t)(P(a,t),F1(f,t));
-#define KP1(t) P(t##kp,t)(P(a,t),F1(f,t)){LI(l,t);t i;t c=0;for(i=a[0];i>0;--i){if((*f)(a[i])){PS(l,t,a[i]);++c;}}a[0]=c;for(i=1;i<=c;++i){a[i]=l->v;PP(l,t);}PRO("KP");return a;}
+#define KP1(t) P(t##kp,t)(P(a,t),F1(f,t)){PRO("KP");LI(l,t);PRO("KP");t i;PRO("KP");t c=0;for(i=a[0];i>0;--i){if((*f)(a[i])){PRO("KP");PS(l,t,a[i]);PRO("KP");++c;}}PRO("KP");a[0]=c;for(i=1;i<=c;++i){PRO("KP");a[i]=l->v;PRO("KP");PP(l,t);}PRO("KP");return a;}
 #define MP0(t) P(t##mp,t)(P(a,t),F1(f,t));
-#define MP1(t) P(t##mp,t)(P(a,t),F1(f,t)){t i;for(i=a[0];i>0;--i){a[i]=(*f)(a[i]);}PRO("MP");return a;}
+#define MP1(t) P(t##mp,t)(P(a,t),F1(f,t)){PRO("MP");t i;for(i=a[0];i>0;--i){PRO("MP");a[i]=(*f)(a[i]);}PRO("MP");return a;}
 #define MU0(t) t t##mu(t x,t y);
 #define MU1(t) t t##mu(t x,t y){PRO("MU");return x*y;}
 #define PP0(t) L(t##pp,t)(t##ND *l);
-#define PP1(t) L(t##pp,t)(t##ND *l){t##ND *r;r=l->n;free(l);PRO("PP");return r;}
+#define PP1(t) L(t##pp,t)(t##ND *l){PRO("PP");t##ND *r;PRO("PP");r=l->n;PRO("PP");free(l);PRO("PP");return r;}
 #define PS0(t) L(t##ps,t)(t v,t##ND *l);
-#define PS1(t) L(t##ps,t)(t v,t##ND *l){LI(r,t);r=(t##ND*)malloc(sizeof(t##ND));r->v=v;r->n=l;PRO("PS");return r;}
+#define PS1(t) L(t##ps,t)(t v,t##ND *l){PRO("PS");LI(r,t);PRO("PS");r=(t##ND*)malloc(sizeof(t##ND));PRO("PS");r->v=v;PRO("PS");r->n=l;PRO("PS");return r;}
 #define RD0(t) t t##rd(t f,t *a,F2(c,t));
-#define RD1(t) t t##rd(t f,t *a,F2(c,t)){t p;a[a[0]]=(*c)(a[a[0]],f);for(p=a[0]-1;p>0;--p){a[p]=(*c)(a[p],a[p+1]);}PRO("RD");return a[1];}
+#define RD1(t) t t##rd(t f,t *a,F2(c,t)){PRO("RD");t p;PRO("RD");a[a[0]]=(*c)(a[a[0]],f);for(p=a[0]-1;p>0;--p){PRO("RD");a[p]=(*c)(a[p],a[p+1]);}PRO("RD");return a[1];}
 #define RR0(t) P(t##rr,t)(t s);
-#define RR1(t) P(t##rr,t)(t s){P(a,t);a=(t*)malloc((s+1)*sizeof(t));a[0]=s;PRO("RR");return a;}
+#define RR1(t) P(t##rr,t)(t s){PRO("RR");P(a,t);PRO("RR");a=(t*)malloc((s+1)*sizeof(t));PRO("RR");a[0]=s;PRO("RR");return a;}
 #define SB0(t) t t##sb(t x,t y);
 #define SB1(t) t t##sb(t x,t y){PRO("SB");return x-y;}
     
@@ -165,8 +165,6 @@
     MP1(CH)
     
     HW1
-    
-    
     
     int main()
     {
