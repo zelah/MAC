@@ -7,7 +7,7 @@
 #define B2(r,t,a,c) r=t##b2(a,&t##c)
 #define DV(x,y) PRO("DV");HW;x/=y
 #define HV(x) PRO("HV");HW;x/=2
-#define HW VOhw()
+#define HW PRO("return")
 #define KP(a,t,f) t##kp(a,&t##f)
 #define MP(a,t,f) t##mp(a,&t##f)
 #define MU(x,y) PRO("MU");HW;x*=y
@@ -39,6 +39,7 @@
 //^raise number to decrease sampling
 #define PRO4 1024
 //^adjust output size for use with "verbose halting" mode
+//#define HW PRO("return")
 //#define P(n,t) t *n
 //#define ND(t) typedef struct t##N {t v;struct t##N*n;} t##N
 //typedef char CH;
@@ -61,8 +62,6 @@
 #define B2b(t) t t##b2(P(a,t),F2(c,t)){PRO("B2");t r;PRO("B2");LI(l,t);PRO("B2");t i;for(i=a[0];i>0;--i){PRO("B2");PS(l,t,a[i]);}PRO("B2");l=t##b2a(l,c);PRO("B2");r=l->v;PRO("B2");PP(l,t);PRO("B2");HW;return r;}L(t##b2a,t)(L(l,t),F2(c,t)){if(l->n==NULL){PRO("B2");return l;}else{PRO("B2");LI(r,t);PRO("B2");return t##b2a(t##b2b(l,c,r),c);}}L(t##b2b,t)(L(l,t),F2(c,t),L(r,t)){if((l==NULL)&&(r->n==NULL)){PRO("B2");return r;}else if(l==NULL){PRO("B2");return t##b2c(r,c,l);}else if((l->n==NULL)&&(r==NULL)){PRO("B2");return l;}else if(l->n==NULL){PRO("B2");PS(r,t,l->v);PRO("B2");PP(l,t);PRO("B2");return t##b2c(r,c,l);}else{PRO("B2");PS(r,t,(*c)(l->v,l->n->v));PRO("B2");PP(l,t);PRO("B2");PP(l,t);PRO("B2");return t##b2b(l,c,r);}}L(t##b2c,t)(L(l,t),F2(c,t),L(r,t)){if((l==NULL)&&(r->n==NULL)){PRO("B2");return r;}else if(l==NULL){PRO("B2");return t##b2b(r,c,l);}else if((l->n==NULL)&&(r==NULL)){PRO("B2");return l;}else if(l->n==NULL){PRO("B2");PS(r,t,l->v);PRO("B2");PP(l,t);PRO("B2");return t##b2b(r,c,l);}else{PRO("B2");PS(r,t,(*c)(l->n->v,l->v));PRO("B2");PP(l,t);PRO("B2");PP(l,t);PRO("B2");return t##b2c(l,c,r);}}
 #define DV0(t) t t##dv(t x,t y);
 #define DV1(t) t t##dv(t x,t y){PRO("DV");HW;return x/y;}
-#define HW0 void VOhw();
-#define HW1 void VOhw(){PRO("return");}
 #define INC0(t) t t##inc(t n);
 #define INC1(t) t t##inc(t n){PRO("INC");HW;return n+1;}
 #define KP0(t) P(t##kp,t)(P(a,t),F1(f,t));
@@ -106,8 +105,6 @@
     
     UL PROSTART=0;
     L(PROSEEN,CHP);
-    
-    HW0
     
     MP0(CH)
     
@@ -164,8 +161,6 @@
     INC1(CH)
     
     MP1(CH)
-    
-    HW1
     
     int main()
     {
