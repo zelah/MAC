@@ -3,24 +3,24 @@
 #include<string.h>
 #include<time.h>
 
-#define AD(x,y) PRO("AD");x+=y
+#define AD(x,y) PRO("AD");HW;x+=y
 #define B2(r,t,a,c) r=t##b2(a,&t##c)
-#define DV(x,y) PRO("DV");x/=y
-#define HV(x) PRO("HV");x/=2
+#define DV(x,y) PRO("DV");HW;x/=y
+#define HV(x) PRO("HV");HW;x/=2
 #define HW VOhw()
 #define KP(a,t,f) t##kp(a,&t##f)
 #define MP(a,t,f) t##mp(a,&t##f)
-#define MU(x,y) PRO("MU");x*=y
+#define MU(x,y) PRO("MU");HW;x*=y
 #define PP(l,t) l=t##pp(l)
 #define PS(l,t,v) l=t##ps(v,l)
 #define RD(r,t,f,a,c) r=t##rd(f,a,&t##c);
 #define RR(a,t,s) P(a,t);a=t##rr(s)
-#define SB(x,y) PRO("SB");x-=y
-#define SQ(x) PRO("SQ");x*=x
-#define TW(x) PRO("TW");x*=2
+#define SB(x,y) PRO("SB");HW;x-=y
+#define SQ(x) PRO("SQ");HW;x*=x
+#define TW(x) PRO("TW");HW;x*=2
 
 //PROBABILISTIC PROFILER IN C MACROS
-#define PROFILE PROSEEN=NULL;srand(time(NULL))
+#define PROFILE PROSEEN=NULL;{LI(t,CHP);t=(CHPND*)malloc(sizeof(CHPND));t->v="RETURN";t->n=PROSEEN;PROSEEN=t;}srand(time(NULL))
 //PROFILE;
 //^at the top of main()
 #define PRO(s) PRO1(s)
@@ -33,7 +33,7 @@
 //#define PRO(s) PRO2(s)
 //^verbose halting mode
 #define PRO0(s)
-#define PRO1(s) {int r=rand()/(RAND_MAX/PRO3);if(r==0){int c=1;L(q,CHP);q=PROSEEN;while((q!=NULL)&&(strcmp(q->v,s))){q=q->n;++c;}if(q==NULL){LI(t,CHP);t=(CHPND*)malloc(sizeof(CHPND));t->v=s;t->n=PROSEEN;PROSEEN=t;printf(" %d:%s ",c,s);fflush(stdout);}}}
+#define PRO1(s) {int r=rand()/(RAND_MAX/PRO3);if(r==0){int c=0;L(q,CHP);q=PROSEEN;while((q!=NULL)&&(strcmp(q->v,s))){q=q->n;++c;}if(q==NULL){LI(t,CHP);t=(CHPND*)malloc(sizeof(CHPND));t->v=s;t->n=PROSEEN;PROSEEN=t;printf(" %d:%s ",c,s);fflush(stdout);}}}
 #define PRO2(s) {time_t t=time(NULL);int r=rand()/(RAND_MAX/PRO3);if(PROSTART){if(PROSTART==PRO4){PROSTART=0;}printf(" %d:%s ",(char)(t%100),s);fflush(stdout);printf("%c",1/PROSTART);++PROSTART;}if(r){;}else{PROSTART=1;}}
 #define PRO3 1024
 //^raise number to decrease sampling
@@ -56,31 +56,31 @@
 #define P(n,t) t *n
                                                                                                                                                                                             
 #define AD0(t) t t##ad(t x,t y);
-#define AD1(t) t t##ad(t x,t y){PRO("AD");return x+y;}
+#define AD1(t) t t##ad(t x,t y){PRO("AD");HW;return x+y;}
 #define B2a(t) t t##b2(P(a,t),F2(c,t));L(t##b2a,t)(L(l,t),F2(c,t));L(t##b2b,t)(L(l,t),F2(c,t),L(r,t));L(t##b2c,t)(L(l,t),F2(c,t),L(r,t));
-#define B2b(t) t t##b2(P(a,t),F2(c,t)){PRO("B2");t r;PRO("B2");LI(l,t);PRO("B2");t i;for(i=a[0];i>0;--i){PRO("B2");PS(l,t,a[i]);}PRO("B2");l=t##b2a(l,c);PRO("B2");r=l->v;PRO("B2");PP(l,t);PRO("B2");return r;}L(t##b2a,t)(L(l,t),F2(c,t)){if(l->n==NULL){PRO("B2");return l;}else{PRO("B2");LI(r,t);PRO("B2");return t##b2a(t##b2b(l,c,r),c);}}L(t##b2b,t)(L(l,t),F2(c,t),L(r,t)){if((l==NULL)&&(r->n==NULL)){PRO("B2");return r;}else if(l==NULL){PRO("B2");return t##b2c(r,c,l);}else if((l->n==NULL)&&(r==NULL)){PRO("B2");return l;}else if(l->n==NULL){PRO("B2");PS(r,t,l->v);PRO("B2");PP(l,t);PRO("B2");return t##b2c(r,c,l);}else{PRO("B2");PS(r,t,(*c)(l->v,l->n->v));PRO("B2");PP(l,t);PRO("B2");PP(l,t);PRO("B2");return t##b2b(l,c,r);}}L(t##b2c,t)(L(l,t),F2(c,t),L(r,t)){if((l==NULL)&&(r->n==NULL)){PRO("B2");return r;}else if(l==NULL){PRO("B2");return t##b2b(r,c,l);}else if((l->n==NULL)&&(r==NULL)){PRO("B2");return l;}else if(l->n==NULL){PRO("B2");PS(r,t,l->v);PRO("B2");PP(l,t);PRO("B2");return t##b2b(r,c,l);}else{PRO("B2");PS(r,t,(*c)(l->n->v,l->v));PRO("B2");PP(l,t);PRO("B2");PP(l,t);PRO("B2");return t##b2c(l,c,r);}}
+#define B2b(t) t t##b2(P(a,t),F2(c,t)){PRO("B2");t r;PRO("B2");LI(l,t);PRO("B2");t i;for(i=a[0];i>0;--i){PRO("B2");PS(l,t,a[i]);}PRO("B2");l=t##b2a(l,c);PRO("B2");r=l->v;PRO("B2");PP(l,t);PRO("B2");HW;return r;}L(t##b2a,t)(L(l,t),F2(c,t)){if(l->n==NULL){PRO("B2");return l;}else{PRO("B2");LI(r,t);PRO("B2");return t##b2a(t##b2b(l,c,r),c);}}L(t##b2b,t)(L(l,t),F2(c,t),L(r,t)){if((l==NULL)&&(r->n==NULL)){PRO("B2");return r;}else if(l==NULL){PRO("B2");return t##b2c(r,c,l);}else if((l->n==NULL)&&(r==NULL)){PRO("B2");return l;}else if(l->n==NULL){PRO("B2");PS(r,t,l->v);PRO("B2");PP(l,t);PRO("B2");return t##b2c(r,c,l);}else{PRO("B2");PS(r,t,(*c)(l->v,l->n->v));PRO("B2");PP(l,t);PRO("B2");PP(l,t);PRO("B2");return t##b2b(l,c,r);}}L(t##b2c,t)(L(l,t),F2(c,t),L(r,t)){if((l==NULL)&&(r->n==NULL)){PRO("B2");return r;}else if(l==NULL){PRO("B2");return t##b2b(r,c,l);}else if((l->n==NULL)&&(r==NULL)){PRO("B2");return l;}else if(l->n==NULL){PRO("B2");PS(r,t,l->v);PRO("B2");PP(l,t);PRO("B2");return t##b2b(r,c,l);}else{PRO("B2");PS(r,t,(*c)(l->n->v,l->v));PRO("B2");PP(l,t);PRO("B2");PP(l,t);PRO("B2");return t##b2c(l,c,r);}}
 #define DV0(t) t t##dv(t x,t y);
-#define DV1(t) t t##dv(t x,t y){PRO("DV");return x/y;}
+#define DV1(t) t t##dv(t x,t y){PRO("DV");HW;return x/y;}
 #define HW0 void VOhw();
-#define HW1 void VOhw(){PRO("HW");}
+#define HW1 void VOhw(){PRO("RETURN");}
 #define INC0(t) t t##inc(t n);
-#define INC1(t) t t##inc(t n){PRO("INC");return n+1;}
+#define INC1(t) t t##inc(t n){PRO("INC");HW;return n+1;}
 #define KP0(t) P(t##kp,t)(P(a,t),F1(f,t));
-#define KP1(t) P(t##kp,t)(P(a,t),F1(f,t)){PRO("KP");LI(l,t);PRO("KP");t i;PRO("KP");t c=0;for(i=a[0];i>0;--i){if((*f)(a[i])){PRO("KP");PS(l,t,a[i]);PRO("KP");++c;}}PRO("KP");a[0]=c;for(i=1;i<=c;++i){PRO("KP");a[i]=l->v;PRO("KP");PP(l,t);}PRO("KP");return a;}
+#define KP1(t) P(t##kp,t)(P(a,t),F1(f,t)){PRO("KP");LI(l,t);PRO("KP");t i;PRO("KP");t c=0;for(i=a[0];i>0;--i){if((*f)(a[i])){PRO("KP");PS(l,t,a[i]);PRO("KP");++c;}}PRO("KP");a[0]=c;for(i=1;i<=c;++i){PRO("KP");a[i]=l->v;PRO("KP");PP(l,t);}PRO("KP");HW;return a;}
 #define MP0(t) P(t##mp,t)(P(a,t),F1(f,t));
-#define MP1(t) P(t##mp,t)(P(a,t),F1(f,t)){PRO("MP");t i;for(i=a[0];i>0;--i){PRO("MP");a[i]=(*f)(a[i]);}PRO("MP");return a;}
+#define MP1(t) P(t##mp,t)(P(a,t),F1(f,t)){PRO("MP");t i;for(i=a[0];i>0;--i){PRO("MP");a[i]=(*f)(a[i]);}PRO("MP");HW;return a;}
 #define MU0(t) t t##mu(t x,t y);
-#define MU1(t) t t##mu(t x,t y){PRO("MU");return x*y;}
+#define MU1(t) t t##mu(t x,t y){PRO("MU");HW;return x*y;}
 #define PP0(t) L(t##pp,t)(t##ND *l);
-#define PP1(t) L(t##pp,t)(t##ND *l){PRO("PP");t##ND *r;PRO("PP");r=l->n;PRO("PP");free(l);PRO("PP");return r;}
+#define PP1(t) L(t##pp,t)(t##ND *l){PRO("PP");t##ND *r;PRO("PP");r=l->n;PRO("PP");free(l);PRO("PP");HW;return r;}
 #define PS0(t) L(t##ps,t)(t v,t##ND *l);
-#define PS1(t) L(t##ps,t)(t v,t##ND *l){PRO("PS");LI(r,t);PRO("PS");r=(t##ND*)malloc(sizeof(t##ND));PRO("PS");r->v=v;PRO("PS");r->n=l;PRO("PS");return r;}
+#define PS1(t) L(t##ps,t)(t v,t##ND *l){PRO("PS");LI(r,t);PRO("PS");r=(t##ND*)malloc(sizeof(t##ND));PRO("PS");r->v=v;PRO("PS");r->n=l;PRO("PS");HW;return r;}
 #define RD0(t) t t##rd(t f,t *a,F2(c,t));
-#define RD1(t) t t##rd(t f,t *a,F2(c,t)){PRO("RD");t p;PRO("RD");a[a[0]]=(*c)(a[a[0]],f);for(p=a[0]-1;p>0;--p){PRO("RD");a[p]=(*c)(a[p],a[p+1]);}PRO("RD");return a[1];}
+#define RD1(t) t t##rd(t f,t *a,F2(c,t)){PRO("RD");t p;PRO("RD");a[a[0]]=(*c)(a[a[0]],f);for(p=a[0]-1;p>0;--p){PRO("RD");a[p]=(*c)(a[p],a[p+1]);}PRO("RD");HW;return a[1];}
 #define RR0(t) P(t##rr,t)(t s);
-#define RR1(t) P(t##rr,t)(t s){PRO("RR");P(a,t);PRO("RR");a=(t*)malloc((s+1)*sizeof(t));PRO("RR");a[0]=s;PRO("RR");return a;}
+#define RR1(t) P(t##rr,t)(t s){PRO("RR");P(a,t);PRO("RR");a=(t*)malloc((s+1)*sizeof(t));PRO("RR");a[0]=s;PRO("RR");HW;return a;}
 #define SB0(t) t t##sb(t x,t y);
-#define SB1(t) t t##sb(t x,t y){PRO("SB");return x-y;}
+#define SB1(t) t t##sb(t x,t y){PRO("SB");HW;return x-y;}
     
     typedef char CH;
     typedef unsigned char UC;
@@ -175,7 +175,6 @@
         {
             DB x=1.000001;
             UL i;
-            HW;
             for(i=1;i<7777777;++i)
             {
                 if(x>2){HV(x);}
