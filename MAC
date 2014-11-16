@@ -2,7 +2,7 @@
 #include<stdlib.h>
 #include<string.h>
 #include<time.h>
-
+ 
 #define AD(x,y) PRO("AD");HW;x+=y
 #define B2(r,t,a,c) r=t##b2(a,&t##c)
 #define DV(x,y) PRO("DV");HW;x/=y
@@ -18,9 +18,9 @@
 #define SB(x,y) PRO("SB");HW;x-=y
 #define SQ(x) PRO("SQ");HW;x*=x
 #define TW(x) PRO("TW");HW;x*=2
-
+ 
 //PROBABILISTIC PROFILER IN C MACROS
-#define PROFILE PROSEEN=NULL;{LI(t,CHP);t=(CHPND*)malloc(sizeof(CHPND));t->v="RETURN";t->n=PROSEEN;PROSEEN=t;}srand(time(NULL))
+#define PROFILE PROSEEN=NULL;{LI(t,CHP);t=(CHPND*)malloc(sizeof(CHPND));t->v="return";t->n=PROSEEN;PROSEEN=t;}srand(time(NULL))
 //PROFILE;
 //^at the top of main()
 #define PRO(s) PRO1(s)
@@ -62,7 +62,7 @@
 #define DV0(t) t t##dv(t x,t y);
 #define DV1(t) t t##dv(t x,t y){PRO("DV");HW;return x/y;}
 #define HW0 void VOhw();
-#define HW1 void VOhw(){PRO("RETURN");}
+#define HW1 void VOhw(){PRO("return");}
 #define INC0(t) t t##inc(t n);
 #define INC1(t) t t##inc(t n){PRO("INC");HW;return n+1;}
 #define KP0(t) P(t##kp,t)(P(a,t),F1(f,t));
