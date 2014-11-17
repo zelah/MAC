@@ -59,15 +59,15 @@
 #define AD0(t) t t##ad(t x,t y);
 #define AD1(t) t t##ad(t x,t y){PRO("AD");HW;return x+y;}
 #define B2a(t) t t##b2(P(a,t),F2(c,t));L(t##b2a,t)(L(l,t),F2(c,t));L(t##b2b,t)(L(l,t),F2(c,t),L(r,t));L(t##b2c,t)(L(l,t),F2(c,t),L(r,t));
-#define B2b(t) t t##b2(P(a,t),F2(c,t)){PRO("B2");t r;PRO("B2");LI(l,t);PRO("B2");t i;for(i=a[0];i>0;--i){PRO("B2");PS(l,t,a[i]);}PRO("B2");l=t##b2a(l,c);PRO("B2");r=l->v;PRO("B2");PP(l,t);PRO("B2");HW;return r;}L(t##b2a,t)(L(l,t),F2(c,t)){if(l->n==NULL){PRO("B2");return l;}else{PRO("B2");LI(r,t);PRO("B2");return t##b2a(t##b2b(l,c,r),c);}}L(t##b2b,t)(L(l,t),F2(c,t),L(r,t)){if((l==NULL)&&(r->n==NULL)){PRO("B2");return r;}else if(l==NULL){PRO("B2");return t##b2c(r,c,l);}else if((l->n==NULL)&&(r==NULL)){PRO("B2");return l;}else if(l->n==NULL){PRO("B2");PS(r,t,l->v);PRO("B2");PP(l,t);PRO("B2");return t##b2c(r,c,l);}else{PRO("B2");PS(r,t,(*c)(l->v,l->n->v));PRO("B2");PP(l,t);PRO("B2");PP(l,t);PRO("B2");return t##b2b(l,c,r);}}L(t##b2c,t)(L(l,t),F2(c,t),L(r,t)){if((l==NULL)&&(r->n==NULL)){PRO("B2");return r;}else if(l==NULL){PRO("B2");return t##b2b(r,c,l);}else if((l->n==NULL)&&(r==NULL)){PRO("B2");return l;}else if(l->n==NULL){PRO("B2");PS(r,t,l->v);PRO("B2");PP(l,t);PRO("B2");return t##b2b(r,c,l);}else{PRO("B2");PS(r,t,(*c)(l->n->v,l->v));PRO("B2");PP(l,t);PRO("B2");PP(l,t);PRO("B2");return t##b2c(l,c,r);}}
+#define B2b(t) t t##b2(P(a,t),F2(c,t)){PRO("B2");t r;PRO("B2");LI(l,t);PRO("B2");t i;PRO("B2");for(i=a[0];i>0;--i){PRO("B2");PS(l,t,a[i]);}PRO("B2");l=t##b2a(l,c);PRO("B2");r=l->v;PRO("B2");PP(l,t);PRO("B2");HW;return r;}L(t##b2a,t)(L(l,t),F2(c,t)){PRO("B2");if(l->n==NULL){PRO("B2");return l;}else{PRO("B2");LI(r,t);PRO("B2");return t##b2a(t##b2b(l,c,r),c);}}L(t##b2b,t)(L(l,t),F2(c,t),L(r,t)){PRO("B2");if((l==NULL)&&(r->n==NULL)){PRO("B2");return r;}else if(l==NULL){PRO("B2");return t##b2c(r,c,l);}else if((l->n==NULL)&&(r==NULL)){PRO("B2");return l;}else if(l->n==NULL){PRO("B2");PS(r,t,l->v);PRO("B2");PP(l,t);PRO("B2");return t##b2c(r,c,l);}else{PRO("B2");PS(r,t,(*c)(l->v,l->n->v));PRO("B2");PP(l,t);PRO("B2");PP(l,t);PRO("B2");return t##b2b(l,c,r);}}L(t##b2c,t)(L(l,t),F2(c,t),L(r,t)){PRO("B2");if((l==NULL)&&(r->n==NULL)){PRO("B2");return r;}else if(l==NULL){PRO("B2");return t##b2b(r,c,l);}else if((l->n==NULL)&&(r==NULL)){PRO("B2");return l;}else if(l->n==NULL){PRO("B2");PS(r,t,l->v);PRO("B2");PP(l,t);PRO("B2");return t##b2b(r,c,l);}else{PRO("B2");PS(r,t,(*c)(l->n->v,l->v));PRO("B2");PP(l,t);PRO("B2");PP(l,t);PRO("B2");return t##b2c(l,c,r);}}
 #define DV0(t) t t##dv(t x,t y);
 #define DV1(t) t t##dv(t x,t y){PRO("DV");HW;return x/y;}
 #define INC0(t) t t##inc(t n);
 #define INC1(t) t t##inc(t n){PRO("INC");HW;return n+1;}
 #define KP0(t) P(t##kp,t)(P(a,t),F1(f,t));
-#define KP1(t) P(t##kp,t)(P(a,t),F1(f,t)){PRO("KP");LI(l,t);PRO("KP");t i;PRO("KP");t c=0;for(i=a[0];i>0;--i){if((*f)(a[i])){PRO("KP");PS(l,t,a[i]);PRO("KP");++c;}}PRO("KP");a[0]=c;for(i=1;i<=c;++i){PRO("KP");a[i]=l->v;PRO("KP");PP(l,t);}PRO("KP");HW;return a;}
+#define KP1(t) P(t##kp,t)(P(a,t),F1(f,t)){PRO("KP");LI(l,t);PRO("KP");t i;PRO("KP");t c=0;for(i=a[0];i>0;--i){PRO("KP");if((*f)(a[i])){PRO("KP");PS(l,t,a[i]);PRO("KP");++c;}}PRO("KP");a[0]=c;PRO("KP");for(i=1;i<=c;++i){PRO("KP");a[i]=l->v;PRO("KP");PP(l,t);}PRO("KP");HW;return a;}
 #define MP0(t) P(t##mp,t)(P(a,t),F1(f,t));
-#define MP1(t) P(t##mp,t)(P(a,t),F1(f,t)){PRO("MP");t i;for(i=a[0];i>0;--i){PRO("MP");a[i]=(*f)(a[i]);}PRO("MP");HW;return a;}
+#define MP1(t) P(t##mp,t)(P(a,t),F1(f,t)){PRO("MP");t i;PRO("MP");for(i=a[0];i>0;--i){PRO("MP");a[i]=(*f)(a[i]);}PRO("MP");HW;return a;}
 #define MU0(t) t t##mu(t x,t y);
 #define MU1(t) t t##mu(t x,t y){PRO("MU");HW;return x*y;}
 #define PP0(t) L(t##pp,t)(t##ND *l);
@@ -75,7 +75,7 @@
 #define PS0(t) L(t##ps,t)(t v,t##ND *l);
 #define PS1(t) L(t##ps,t)(t v,t##ND *l){PRO("PS");LI(r,t);PRO("PS");r=(t##ND*)malloc(sizeof(t##ND));PRO("PS");r->v=v;PRO("PS");r->n=l;PRO("PS");HW;return r;}
 #define RD0(t) t t##rd(t f,t *a,F2(c,t));
-#define RD1(t) t t##rd(t f,t *a,F2(c,t)){PRO("RD");t p;PRO("RD");a[a[0]]=(*c)(a[a[0]],f);for(p=a[0]-1;p>0;--p){PRO("RD");a[p]=(*c)(a[p],a[p+1]);}PRO("RD");HW;return a[1];}
+#define RD1(t) t t##rd(t f,t *a,F2(c,t)){PRO("RD");t p;PRO("RD");a[a[0]]=(*c)(a[a[0]],f);PRO("RD");for(p=a[0]-1;p>0;--p){PRO("RD");a[p]=(*c)(a[p],a[p+1]);}PRO("RD");HW;return a[1];}
 #define RR0(t) P(t##rr,t)(t s);
 #define RR1(t) P(t##rr,t)(t s){PRO("RR");P(a,t);PRO("RR");a=(t*)malloc((s+1)*sizeof(t));PRO("RR");a[0]=s;PRO("RR");HW;return a;}
 #define SB0(t) t t##sb(t x,t y);
@@ -166,7 +166,7 @@
     {
         PROFILE;
         UL j;
-        for(j=1;j<22;++j)
+        for(j=1;j<77;++j)
         {
             DB x=1.000001;
             UL i;
