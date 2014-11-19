@@ -23,7 +23,7 @@
 #define PROFILE PROSEEN=NULL;{LI(t,CHP);t=(CHPND*)malloc(sizeof(CHPND));t->v="return";t->n=PROSEEN;PROSEEN=t;}srand(time(NULL))
 //PROFILE;
 //^at the top of main()
-#define PRO(s) PRO1(s)
+#define PRO(s) PRO0(s)
 //PRO("functionName");
 //^in every function
 //#define PRO(s) PRO0(s)
@@ -190,6 +190,7 @@
             a[1]=4;
             a[2]=2;
             a[3]=1;
+            a=(CHP)realloc(a,sizeof(CH)*5);
             B2(c,CH,a,ad);
             printf(" %d ",c);
             free(a);
