@@ -1,3 +1,4 @@
+#include<limits.h>
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
@@ -50,7 +51,8 @@
 //L(PROSEEN,CHP);
                                                                  
 #define ND(t) typedef struct t##N {t v;struct t##N*n;} t##ND;
-                                                                                                                                                                                    
+
+#define BG ULLONG_MAX/2                                                                                                                                                                                    
 #define F1(n,t) t (*n)(t)
 #define F2(n,t) t (*n)(t,t)
 #define L(n,t) t##ND *n
@@ -200,6 +202,7 @@
             PS(sl,CHP,"zelah");
             printf(" %s ",sl->v);
             PP(sl,CHP);
+            printf(" %llu ",BG);
             printf("\n\n");
         }
         return 0;
