@@ -163,6 +163,9 @@
     
     MP1(CH)
     
+    CHP CHPnm(CHP string);
+    CHP CHPnm(CHP string){LI(list,CH);UL i=0;while(string[i]){PS(list,CH,string[i++]-'0' );}UL j=i/2;RR(number,CH,j);if(i==j*2){for(i=1;i<j;++i){number[i]=(list->n->v)*10+(list->v);PP(list,CH);PP(list,CH);}number[j]=list->v;}else{for(i=1;i<=j;++i){number[i]=(list->n->v)*10+(list->v);PP(list,CH);PP(list,CH);}}return number;}
+
     int main()
     {
         PROFILE;
@@ -200,6 +203,9 @@
             PS(sl,CHP,"zelah");
             printf(" %s ",sl->v);
             PP(sl,CHP);
+            CHP test;
+            test=CHPnm("54321");
+            printf(" %d ",test[1]);
             printf("\n\n");
         }
         return 0;
