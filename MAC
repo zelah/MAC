@@ -13,7 +13,7 @@
 #define MU(x,y) PRO("MU");HW;x*=y
 #define PP(l,t) l=t##pp(l)
 #define PS(l,t,v) l=t##ps(v,l)
-#define RD(r,t,f,a,c) r=t##rd(f,a,&t##c);
+#define RD(r,t,f,a,c) r=t##rd(f,a,&t##c)
 #define RR(a,t,s) P(a,t);a=t##rr(s)
 #define SB(x,y) PRO("SB");HW;x-=y
 #define SQ(x) PRO("SQ");HW;x*=x
@@ -101,7 +101,9 @@
     typedef double DB;
     typedef long double LD;
     typedef P(CHP,CH);
+    typedef P(LUP,LU);
     ND(CH)
+    ND(LU)
     ND(CHP)
     
     UL PROSTART=0;
@@ -135,6 +137,18 @@
     
     PP0(CHP)
     
+    RR0(LU)
+
+    PP0(LU)
+
+    PS0(LU)
+
+    PS1(LU)
+
+    PP1(LU)
+
+    RR1(LU)
+
     PP1(CHP)
     
     PS1(CHP)
@@ -163,9 +177,9 @@
     
     MP1(CH)
     
-    CHP CHPnm(CHP string);
-    CHP CHPnm(CHP string){LI(list,CH);UL i=0;while(string[i]){PS(list,CH,string[i++]-'0' );}UL j=i/2;RR(number,CH,j);if(i==j*2){for(i=1;i<j;++i){number[i]=(list->n->v)*10+(list->v);PP(list,CH);PP(list,CH);}number[j]=list->v;}else{for(i=1;i<=j;++i){number[i]=(list->n->v)*10+(list->v);PP(list,CH);PP(list,CH);}}return number;}
-
+    LUP LUPnm(CHP string);
+    LUP LUPnm(CHP string){LI(list,LU);LU i=0;while(string[i]){PS(list,LU,(LU)(string[i++]-'0'));}LU j=i/2;RR(number,LU,j);if(i==j*2){for(i=1;i<j;++i){number[i]=(list->n->v)*10+(list->v);PP(list,LU);PP(list,LU);}number[j]=list->v;}else{for(i=1;i<=j;++i){number[i]=(list->n->v)*10+(list->v);PP(list,LU);PP(list,LU);}}return number;}
+ 
     int main()
     {
         PROFILE;
@@ -203,9 +217,9 @@
             PS(sl,CHP,"zelah");
             printf(" %s ",sl->v);
             PP(sl,CHP);
-            CHP test;
-            test=CHPnm("54321");
-            printf(" %d ",test[1]);
+            LUP test;
+            test=LUPnm("54321");
+            printf(" %lu ",test[1]);
             printf("\n\n");
         }
         return 0;
