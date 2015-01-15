@@ -1,8 +1,8 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
-
-#define FOR PROFILE(" _FOR_ ");for
+ 
+#define FOR PROFILE("\n_FOR_ ");for
 #define MAIN0(block) int main();
 #define MAIN1(block) int main() block
 #define NODE(type) typedef struct type##n{type value;struct type##n *next;} type##n;
@@ -10,27 +10,27 @@
 #define PROFILE(string) PROFILE1(string)
 #define PROFILE0(string)
 #define PROFILE1(string) printf(string)
-#define RETURN(string,value) PROFILE(" _RETURN_");PROFILE(string);PROFILE("_ ");return value
-#define RETURN_MAIN(value) PROFILE(" _RETURN_MAIN_ ");RETURN_MAIN1(value)
+#define RETURN(string,value) PROFILE("\n_RETURN_");PROFILE(string);PROFILE("_ ");return value
+#define RETURN_MAIN(value) PROFILE("\n_RETURN_MAIN_ ");RETURN_MAIN1(value)
 #define RETURN_MAIN0(value) return value
 #define RETURN_MAIN1(value) if(value==0) return main();return value
 #define TYPEDEF typedef char CH;typedef signed char SCH;typedef unsigned char UCH;typedef short SH;typedef unsigned short USH;typedef int IN;typedef unsigned int UIN;typedef long LO;typedef unsigned long ULO;typedef long long LL;typedef unsigned long long ULL;typedef float FL;typedef double DB;typedef long double LD;
-#define AssertSmallLessThanOrEqualToLarge(small,large) PROFILE(" _AssertSmallLessThanOrEqualToLarge_ ") small<=large
-#define AssignVariableTheValue(variable,value) PROFILE(" _AssignVariableTheValue_ ");variable=value
+#define AssertSmallLessThanOrEqualToLarge(small,large) PROFILE("\n_AssertSmallLessThanOrEqualToLarge_ ") small<=large
+#define AssignVariableTheValue(variable,value) PROFILE("\n_AssignVariableTheValue_ ");variable=value
 #define ExampleForLoopWithTypeAndStartAndStopAndFormatString(type,start,stop,formatString) {type i;FOR(i=start;i<=stop;++i){PrintString("hello: ");PrintWithFormatStringAndValue(formatString,i);PrintString("\n");}RETURN_MAIN(0);}
 #define ExampleListWithType(type){type##np list;AssignVariableTheValue(list,type##PushWithValueAndList(124,NULL));AssignVariableTheValue(list,type##PushWithValueAndList(123,list));PrintWithFormatStringAndValue("%d\n",list->value);PrintWithFormatStringAndValue("%d\n",list->next->value);RETURN_MAIN(0);}
-#define IncrementVariable(variable) PROFILE(" _IncrementVariable_ ");++variable
-#define PrintString(string) PROFILE(" _PrintString_ ");printf(string)
-#define PrintWithFormatStringAndValue(formatString,value) PROFILE(" _PrintWithFormatStringAndValue_ ");printf(formatString,value)
+#define IncrementVariable(variable) PROFILE("\n_IncrementVariable_ ");++variable
+#define PrintString(string) PROFILE("\n_PrintString_ ");printf(string)
+#define PrintWithFormatStringAndValue(formatString,value) PROFILE("\n_PrintWithFormatStringAndValue_ ");printf(formatString,value)
 #define PushWithValueAndList0(type) type##np type##PushWithValueAndList(type value,type##np list);
 #define PushWithValueAndList1(type) type##np type##PushWithValueAndList(type value,type##np list){type##np temp;AssignVariableTheValue(temp,(type##np)malloc(sizeof(type##n)));AssignVariableTheValue(temp->value,value);AssignVariableTheValue(temp->next,list);RETURN("PushWithValueAndList",temp);}
-
+ 
 TYPEDEF
 NODE(CH)
 POINTER(CHn)
-
+ 
 MAIN0(ExampleListWithType(CH))
 PushWithValueAndList0(CH)
-
+ 
 PushWithValueAndList1(CH)
 MAIN1(ExampleListWithType(CH))
