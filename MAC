@@ -3,6 +3,7 @@
 #include<string.h>
 
 #define F1(type) typedef type (*type##F1)(type);
+#define F2(type) typedef type (*type##F2)(type,type);
 #define FOR PROFILE("\n_FOR_ ");for
 #define FREE(memory) PROFILE("\n_FREE_ ");free(memory)
 #define MAIN0(block) int main();
@@ -19,16 +20,25 @@
 #define TYPEDEF typedef char CH;typedef signed char SCH;typedef unsigned char UCH;typedef short SH;typedef unsigned short USH;typedef int IN;typedef unsigned int UIN;typedef long LO;typedef unsigned long ULO;typedef long long LL;typedef unsigned long long ULL;typedef float FL;typedef double DB;typedef long double LD;
 #define WHILE PROFILE("\n_WHILE_ ");while
 
-#define AddOne0(type) type type##AddOne(type value);
-#define AddOne1(type) type type##AddOne(type value){PROFILE("\n_AddOne_ ");return value+1;}
+#define AddNumberToNumber0(type) type type##AddNumberToNumber(type number1,type number2);
+#define AddNumberToNumber1(type) type type##AddNumberToNumber(type number1,type number2){RETURN("AddNumberToNumber",number1+number2);}
+#define AddOneToNumber0(type) type type##AddOneToNumber(type number);
+#define AddOneToNumber1(type) type type##AddOneToNumber(type number){PROFILE("\n_AddOneToNumber_ ");return number+1;}
 #define AssertSmallLessThanOrEqualToLarge(small,large) PROFILE("\n_AssertSmallLessThanOrEqualToLarge_ ") small<=large
 #define AssignVariableTheValue(variable,value) PROFILE("\n_AssignVariableTheValue_ ");variable=value
+#define ChangeLineBreakCharacterToSpace0 CH ChangeLineBreakCharacterToSpace(CH character);
+#define ChangeLineBreakCharacterToSpace1 CH ChangeLineBreakCharacterToSpace(CH character){RETURN("ChangeLineBreakCharacterToSpace",(character==10||character==13)?32:character);}
+#define CombineArrayWithFunctionAndFinalValue0(type) type type##CombineArrayWithFunctionAndFinalValue(type##p array,type##F2 function,type finalValue);
+#define CombineArrayWithFunctionAndFinalValue1(type) type type##CombineArrayWithFunctionAndFinalValue(type##p array,type##F2 function,type finalValue){ULL i;AssignVariableTheValue(i,0);WHILE(array[i]!=0){IncrementVariable(i);}DecrementVariable(i);AssignVariableTheValue(array[i],(*function)(array[i],finalValue));WHILE(i>0){AssignVariableTheValue(array[i-1],(*function)(array[i-1],array[i]));DecrementVariable(i);}RETURN("CombineArrayWithFunctionAndFinalValue",array[0]);}
 #define CopyString(string) CHpCopyString(string)
 #define CopyString0 CHp CHpCopyString(CHp string);
 #define CopyString1 CHp CHpCopyString(CHp string){CHp copy;ULL count;AssignVariableTheValue(count,strlen(string)+1);AssignVariableTheValue(copy,(CHp)malloc(count*sizeof(CH)));AssignVariableTheValue(count,0);WHILE(string[count]!=0){AssignVariableTheValue(copy[count],string[count]);IncrementVariable(count);}AssignVariableTheValue(copy[count],0);RETURN("CopyString",copy);}
+#define DecrementVariable(variable) PROFILE("\n_DecrementVariable_ ");--variable
+#define ExampleCombineArrayWithTypeAndLengthAndFormatString(type,length,formatString){type##p array;AssignVariableTheValue(array,(type##p)malloc(sizeof(type)*(length+1)));ULL i;FOR(i=0;i<length;++i){AssignVariableTheValue(array[i],1);}AssignVariableTheValue(array[i],0);type##F2 function;AssignVariableTheValue(function,&type##AddNumberToNumber);type sum;AssignVariableTheValue(sum,type##CombineArrayWithFunctionAndFinalValue(array,function,0));PrintWithFormatStringAndValue(formatString,sum);RETURN_MAIN(0);}
 #define ExampleForLoopWithTypeAndStartAndStopAndFormatString(type,start,stop,formatString) {type i;FOR(i=start;i<=stop;++i){PrintString("hello: ");PrintWithFormatStringAndValue(formatString,i);PrintString("\n");}RETURN_MAIN(0);}
 #define ExampleListWithType(type){type##np list;AssignVariableTheValue(list,type##PushWithValueAndList(124,NULL));AssignVariableTheValue(list,type##PushWithValueAndList(123,list));PrintWithFormatStringAndValue("%d\n",list->value);PrintWithFormatStringAndValue("%d\n",list->next->value);RETURN_MAIN(0);}
-#define ExampleString(string) {ULL i;CH c;CHp s;CHF1 function;AssignVariableTheValue(function,&CHAddOne);AssignVariableTheValue(s,CopyString(string));AssignVariableTheValue(s,CHMapFunctionOverArray(function,s));AssignVariableTheValue(i,0);WHILE((c=s[i++])!=0){PrintWithFormatStringAndValue("%c\n",c);}FREE(s);RETURN_MAIN(0);}
+#define ExampleRemoveLineBreaks(string){CHp s;CHF1 function;AssignVariableTheValue(function,&ChangeLineBreakCharacterToSpace);AssignVariableTheValue(s,CopyString(string));AssignVariableTheValue(s,CHMapFunctionOverArray(function,s));PrintWithFormatStringAndValue("%s",s);FREE(s);RETURN_MAIN(0);}
+#define ExampleString(string){ULL i;CH c;CHp s;CHF1 function;AssignVariableTheValue(function,&CHAddOneToNumber);AssignVariableTheValue(s,CopyString(string));AssignVariableTheValue(s,CHMapFunctionOverArray(function,s));AssignVariableTheValue(i,0);WHILE((c=s[i++])!=0){PrintWithFormatStringAndValue("%c\n",c);}FREE(s);RETURN_MAIN(0);}
 #define IncrementVariable(variable) PROFILE("\n_IncrementVariable_ ");++variable
 #define MapFunctionOverArray0(type) type##p type##MapFunctionOverArray(type##F1 function,type##p array);
 #define MapFunctionOverArray1(type) type##p type##MapFunctionOverArray(type##F1 function,type##p array){ULL i;AssignVariableTheValue(i,0);WHILE(array[i]!=0){AssignVariableTheValue(array[i],(*function)(array[i]));IncrementVariable(i);}RETURN("MapFunctionOverArray",array);}
@@ -38,15 +48,13 @@
 #define PushWithValueAndList1(type) type##np type##PushWithValueAndList(type value,type##np list){type##np temp;AssignVariableTheValue(temp,(type##np)malloc(sizeof(type##n)));AssignVariableTheValue(temp->value,value);AssignVariableTheValue(temp->next,list);RETURN("PushWithValueAndList",temp);}
 
 TYPEDEF
-POINTER(CH)
-F1(CH)
+POINTER(ULL)
+F2(ULL)
 
-MAIN0(ExampleString("HAL"))
-CopyString0
-AddOne0(CH)
-MapFunctionOverArray0(CH)
+MAIN0(ExampleCombineArrayWithTypeAndLengthAndFormatString(ULL,1024,"%llu"))
+AddNumberToNumber0(ULL)
+CombineArrayWithFunctionAndFinalValue0(ULL)
 
-MapFunctionOverArray1(CH)
-AddOne1(CH)
-CopyString1
-MAIN1(ExampleString("HAL"))
+CombineArrayWithFunctionAndFinalValue1(ULL)
+AddNumberToNumber1(ULL)
+MAIN1(ExampleCombineArrayWithTypeAndLengthAndFormatString(ULL,1024,"%llu"))
