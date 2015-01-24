@@ -24,7 +24,6 @@
 #define AddNumberToNumber1(type) type type##AddNumberToNumber(type number1,type number2){RETURN("AddNumberToNumber",number1+number2);}
 #define AddOneToNumber0(type) type type##AddOneToNumber(type number);
 #define AddOneToNumber1(type) type type##AddOneToNumber(type number){PROFILE("\n_AddOneToNumber_ ");return number+1;}
-#define AssertSmallLessThanOrEqualToLarge(small,large) PROFILE("\n_AssertSmallLessThanOrEqualToLarge_ ") small<=large
 #define AssignVariableTheValue(variable,value) PROFILE("\n_AssignVariableTheValue_ ");variable=value
 #define ChangeLineBreakCharacterToSpace0 CH ChangeLineBreakCharacterToSpace(CH character);
 #define ChangeLineBreakCharacterToSpace1 CH ChangeLineBreakCharacterToSpace(CH character){RETURN("ChangeLineBreakCharacterToSpace",(character==10||character==13)?32:character);}
